@@ -2,7 +2,6 @@ package com.dbc.trabalhovemser.repository;
 
 
 import com.dbc.trabalhovemser.entity.UsuarioEntity;
-import com.dbc.trabalhovemser.exceptions.BancoDeDadosException;
 
 import java.sql.*;
 import java.util.List;

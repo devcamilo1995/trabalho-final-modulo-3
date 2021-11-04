@@ -4,7 +4,6 @@ package com.dbc.trabalhovemser.repository;
 
 import com.dbc.trabalhovemser.entity.HoteisEntity;
 import com.dbc.trabalhovemser.entity.QuartosEntity;
-import com.dbc.trabalhovemser.exceptions.BancoDeDadosException;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import org.springframework.stereotype.Repository;
 

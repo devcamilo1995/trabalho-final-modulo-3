@@ -3,7 +3,6 @@ package com.dbc.trabalhovemser.controller;
 
 import com.dbc.trabalhovemser.dto.QuartosCreate;
 import com.dbc.trabalhovemser.dto.QuartosDTO;
-import com.dbc.trabalhovemser.exceptions.BancoDeDadosException;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.service.QuartosService;
 import com.fasterxml.jackson.databind.ObjectMapper;
