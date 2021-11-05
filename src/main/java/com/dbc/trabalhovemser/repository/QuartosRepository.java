@@ -1,198 +1,90 @@
 package com.dbc.trabalhovemser.repository;
 
-
-
-import com.dbc.trabalhovemser.entity.HoteisEntity;
 import com.dbc.trabalhovemser.entity.QuartosEntity;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import org.springframework.stereotype.Repository;
 
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
 @Repository
-public class QuartosRepository implements Repositorio<Integer, QuartosEntity> {
-    @Override
-    public Integer getProximoId(Connection connection) throws SQLException {
-        String sql = "SELECT seq_quartos.nextval mysequence from DUAL";
+public class QuartosRepository  {
+    private  static List<QuartosEntity> quartosEntityList = new ArrayList<>();
+    private AtomicInteger COUNTERQUARTOS= new AtomicInteger();
 
-        Statement stmt = connection.createStatement();
-        ResultSet res = stmt.executeQuery(sql);
-
-        if(res.next()){
-            return res.getInt("mysequence");
-        }
-
-        return null;
-    }
-
-    @Override
-    public QuartosEntity adicionar(QuartosEntity object) throws BancoDeDadosException {
-        return null;
+    public QuartosRepository() {
+        //quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), "1", "1", "Tiago"));
     }
 
 
-    @Override
-    public boolean remover(Integer id) throws BancoDeDadosException {
-        return false;
-    }
 
-    @Override
-    public boolean editar(Integer id, QuartosEntity quartosEntity) throws BancoDeDadosException {
-        return false;
+    public QuartosEntity adicionar(QuartosEntity object)  {
+        object.setIdQuarto(COUNTERQUARTOS.incrementAndGet());
+        quartosEntityList.add(object);
+        return object;
     }
 
 
-    @Override
-    public List<QuartosEntity> listar() throws BancoDeDadosException {
-        List<QuartosEntity> listaQuartosDeHotel = new ArrayList<>();
-        Connection con = null;
+    public QuartosEntity update(Integer id, QuartosEntity quartosEntity) throws Exception {
+        QuartosEntity quartoRecuperado = quartosEntityList.stream()
+                .filter(quartoEntity -> quartoEntity.getIdQuarto().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new Exception("Quarto não Encontrado"));
 
-        try {
-            con = ConexaoBancoDeDados.getConnection();
-            String sql = "SELECT * FROM QUARTOS ";
+        quartosEntity.setIdQuarto(quartoRecuperado.getIdQuarto());
 
-            PreparedStatement stmt = con.prepareStatement(sql);
-            ResultSet res = stmt.executeQuery();
+        quartosEntityList.remove(quartoRecuperado);
+        quartosEntityList.add(quartosEntity);
 
-            while (res.next()) {
-                QuartosEntity quartos = new QuartosEntity();
-                HoteisEntity hoteis = new HoteisEntity();
-
-                quartos.setIdQuarto(res.getInt("id_quartos"));
-                hoteis.setIdHotel(res.getInt("id_hoteis"));
-                quartos.setNumeroQuarto(res.getInt("numero_quarto"));
-                quartos.setValorDiaria(res.getDouble("valor_diaria"));
-                quartos.setDescricao(res.getString("descricao"));
-                quartos.setHoteisEntity(hoteis);
-
-                listaQuartosDeHotel.add(quartos);
-            }
-
-
-        }catch (SQLException e){
-            throw new BancoDeDadosException(e.getCause());
-        }finally {
-            try {
-                if(con != null){
-                    con.close();
-                }
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-        }
-        return listaQuartosDeHotel;
+        return quartosEntity;
     }
 
 
-    public List<QuartosEntity> listarQuartosPorHotel(Integer idHotel) throws BancoDeDadosException,
-            RegraDeNegocioException {
-        List<QuartosEntity> listaQuartosDeHotel = new ArrayList<>();
-        Connection con = null;
+    public boolean delete(Integer id) throws RegraDeNegocioException {
+        QuartosEntity quartoRecuperado = quartosEntityList.stream()
+                .filter(quartosEntity -> quartosEntity.getIdQuarto().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Quarto Não Encontrado"));
+        quartosEntityList.remove(quartoRecuperado);
 
-        try {
-            con = ConexaoBancoDeDados.getConnection();
-            String sql = "SELECT ID_QUARTOS , ID_HOTEIS , NUMERO_QUARTO, VALOR_DIARIA, DESCRICAO  " +
-                    "FROM QUARTOS WHERE ID_HOTEIS = ? ";
-
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, idHotel);
-            ResultSet res = stmt.executeQuery();
-
-            while (res.next()) {
-                QuartosEntity quartos = new QuartosEntity();
-                HoteisEntity hoteis = new HoteisEntity();
-
-                quartos.setIdQuarto(res.getInt("id_quartos"));
-                hoteis.setIdHotel(res.getInt("id_hoteis"));
-                quartos.setNumeroQuarto(res.getInt("numero_quarto"));
-                quartos.setValorDiaria(res.getDouble("valor_diaria"));
-                quartos.setDescricao(res.getString("descricao"));
-                quartos.setHoteisEntity(hoteis);
-
-                listaQuartosDeHotel.add(quartos);
-            }
-
-
-        }catch (SQLException e){
-            throw new BancoDeDadosException(e.getCause());
-        }finally {
-            try {
-                if(con != null){
-                    con.close();
-                }
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-        }
-        return listaQuartosDeHotel;
+        return true;
     }
 
 
-    public QuartosEntity getQuartoPorId(Integer id) throws BancoDeDadosException {
-        QuartosEntity quartos = new QuartosEntity();
-        Connection con = null;
 
-        try {
-            con = ConexaoBancoDeDados.getConnection();
-            String sql = "SELECT ID_QUARTOS , ID_HOTEIS , NUMERO_QUARTO, VALOR_DIARIA, DESCRICAO  " +
-                    "FROM QUARTOS WHERE ID_QUARTOS = ? ";
+    public List<QuartosEntity> listar()  {
+        return quartosEntityList;
 
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, id);
-            ResultSet res = stmt.executeQuery();
-
-            while (res.next()) {
-
-                quartos.setIdQuarto(res.getInt("id_quartos"));
-                quartos.setNumeroQuarto(res.getInt("numero_quarto"));
-                quartos.setValorDiaria(res.getDouble("valor_diaria"));
-                quartos.setDescricao(res.getString("descricao"));
-
-            }
-
-
-        }catch (SQLException e){
-            throw new BancoDeDadosException(e.getCause());
-        }finally {
-            try {
-                if(con != null){
-                    con.close();
-                }
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-        }
-        return quartos;
     }
 
 
-    public boolean removerPorHotel(Integer id) throws BancoDeDadosException {
-        Connection con = null;
-        try {
-            con = ConexaoBancoDeDados.getConnection();
+    public List<QuartosEntity> listarQuartosPorHotel(Integer idHotel) {
+        return quartosEntityList.stream()
+                .filter(quartosEntity -> quartosEntity.getHoteisEntity().getIdHotel().equals(idHotel))
+                .toList();
 
-            String sql = "DELETE FROM QUARTOS WHERE id_hoteis = ?";
+    }
 
-            PreparedStatement stmt = con.prepareStatement(sql);
 
-            stmt.setInt(1, id);
+    public QuartosEntity getQuartoPorId(Integer id) throws Exception {
+        QuartosEntity quartoRecuperado = quartosEntityList.stream()
+                .filter(quartoEntity -> quartoEntity.getIdQuarto().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new Exception("Quarto não Encontrado"));
 
-            // Executa-se a consulta
-            int res = stmt.executeUpdate();
-//            System.out.println("removerPessoaPorId.res=" + res);
+        return quartoRecuperado;
 
-            return res > 0;
-        } catch (SQLException e) {
-            throw new BancoDeDadosException(e.getCause());
-        } finally {
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+    }
+
+
+    public boolean removerPorHotel(Integer idHotel) {
+        List<QuartosEntity> deleteQuartosEntityList = quartosEntityList.stream()
+                .filter(quartosEntity -> quartosEntity.getHoteisEntity().getIdHotel().equals(idHotel))
+                .toList();
+
+        quartosEntityList.removeAll(deleteQuartosEntityList);
+
+        return true;
     }
 }

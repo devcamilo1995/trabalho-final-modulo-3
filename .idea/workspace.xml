@@ -5,25 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b880e46-aa2e-464d-8b99-493106575bb7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/HoteisController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/ReservaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/UsuarioController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/HoteisCreateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/HoteisDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/ReservaCreateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/ReservaDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/UsuarioCreateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/UsuarioDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/config/SimpleErrorDecode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/config/SimpleErrorDecode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/ContatoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/EstadoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/ContatoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/EstadoCreateDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/EstadoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/ContatoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/ContatoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/EstadoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/EstadoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/QuartosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/QuartosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/QuartosCreate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/QuartosCreateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/QuartosRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/QuartosRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/QuartosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/QuartosService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/TrabalhoVemserApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/controller/ContatoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/controller/EstadoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/controller/QuartosController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/ContatoDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/EstadoCreateDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/EstadoDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/QuartosCreate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/QuartosDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/entity/CidadeEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/entity/ContatoEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/entity/EnderecoEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/entity/EstadoEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/entity/HoteisEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/entity/QuartosEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/entity/ReservaEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/entity/UsuarioEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/exceptions/BancoDeDadosException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/exceptions/CustomGlobalExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/exceptions/RegraDeNegocioException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/repository/ConexaoBancoDeDados.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/repository/ContatoRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/repository/EstadoRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/repository/QuartosRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/repository/Repositorio.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/repository/UsuarioRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/ContatoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/EstadoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/QuartosService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dbc/trabalhovemser/TrabalhoVemserApplicationTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,12 +69,20 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager">
-    <configuration name="TrabalhoVemserApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.TrabalhoVemserApplication">
+    <configuration name="TrabalhoVemserApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.dbc.trabalhovemser.TrabalhoVemserApplication" />
-      <module name="trabalho-vemser" />
+      <module name="trabalho-final-modulo-3" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.dbc.trabalhovemser.*" />
@@ -67,11 +93,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.TrabalhoVemserApplication" />
-      </list>
-    </recent_temporary>
+    <configuration name="TrabalhoVemserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="trabalho-final-modulo-3" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dbc.trabalhovemser.TrabalhoVemserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.TrabalhoVemserApplication" />
+      <item itemvalue="Spring Boot.TrabalhoVemserApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -81,8 +113,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1635879584338</updated>
+      <workItem from="1636063146412" duration="42000" />
+      <workItem from="1636064835221" duration="196000" />
+      <workItem from="1636109651915" duration="11972000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -95,6 +133,11 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

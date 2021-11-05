@@ -1,13 +1,15 @@
 package com.dbc.trabalhovemser.controller;
 
 
-import com.dbc.trabalhovemser.dto.QuartosCreate;
+import com.dbc.trabalhovemser.dto.QuartosCreateDTO;
 import com.dbc.trabalhovemser.dto.QuartosDTO;
-import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.service.QuartosService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,29 +22,49 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 public class QuartosController {
+    @Autowired
     private final QuartosService quartosService;
-    private final ObjectMapper objectMapper;
 
-//    @PostMapping
-//    public QuartosDTO create(@Valid @RequestBody QuartosCreate quartosCreate){
-//        QuartosDTO quartosDTO = quartosService.create(quartosCreate);
-//        return quartosDTO;
-//    }
 
     @GetMapping
-    public List<QuartosDTO> list() throws BancoDeDadosException {
+    @ApiOperation(value = "Lista Quartos")
+    public List<QuartosDTO> list() {
         return quartosService.listarQuartos();
     }
 
     @GetMapping("/idhotel")
-    public List<QuartosDTO> list(@Valid @RequestParam("idHotel") Integer idHotel) throws BancoDeDadosException {
+    @ApiOperation(value = "Lista de Quartos por ID Hotel")
+    public List<QuartosDTO> list(@Valid @RequestParam("idHotel") Integer idHotel) {
         return quartosService.listarQuartos();
     }
 
+    @ApiOperation(value = "Criando Quartos")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Quarto Criado com sucesso!"),
+            @ApiResponse(code = 400, message = "voçe não tem permição para usar esse recurso"),
+            @ApiResponse(code = 500, message = "Exceção no sistema!")
+    })
+
     @PostMapping
-    public QuartosDTO create(@Valid @RequestBody QuartosCreate quartosCreate) throws BancoDeDadosException,
-            RegraDeNegocioException{
+    public QuartosDTO create(@Valid @RequestBody QuartosCreateDTO quartosCreate)
+            {
         QuartosDTO quartosDTO = quartosService.create(quartosCreate);
+        return quartosDTO;
+    }
+
+    @ApiOperation(value = "Atualizando Quartos Por ID")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Quarto  atualizada com sucesso!"),
+            @ApiResponse(code = 400, message = "voçe não tem permição para usar esse recurso"),
+            @ApiResponse(code = 500, message = "Exceção no sistema!")
+    })
+
+    @PutMapping("/{id}")
+    public QuartosDTO update(@PathVariable("id")@Valid Integer id,
+                              @RequestBody @Valid QuartosDTO quartosDTO) throws Exception {
+        log.info("atualizando Quarto");
+        QuartosDTO quartosDTO1 = quartosService.update(id,quartosDTO);
+        log.info("endereço atualizado");
         return quartosDTO;
     }
 

@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class QuartosCreate {
+public class QuartosCreateDTO {
     @NotNull
     private HoteisEntity hoteisEntity;
 
