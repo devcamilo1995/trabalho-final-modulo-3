@@ -7,7 +7,6 @@ import com.dbc.trabalhovemser.entity.HoteisEntity;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.repository.HoteisRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +31,17 @@ public class HoteisService {
         HoteisEntity hotelCriado = hoteisRepository.create(entity);
         HoteisDTO dto = objectMapper.convertValue(hotelCriado, HoteisDTO.class);
         return dto;
+    }
+
+    public HoteisDTO update(Integer id, HoteisCreateDTO hoteisCreateDTO) throws Exception {
+        HoteisEntity entity = objectMapper.convertValue(hoteisCreateDTO, HoteisEntity.class);
+        HoteisEntity atualizado = hoteisRepository.update(id, entity);
+        HoteisDTO dto = objectMapper.convertValue(atualizado, HoteisDTO.class);
+        return dto;
+    }
+
+    public void delete(Integer id) throws Exception {
+        hoteisRepository.delete(id);
     }
 
 }
