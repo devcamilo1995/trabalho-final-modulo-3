@@ -70,7 +70,7 @@ public class QuartosRepository  {
 
     public List<QuartosEntity> listarQuartosPorHotel(Integer idHotel) {
         return quartosEntityList.stream()
-                .filter(quartosEntity -> quartosEntity.getHoteisEntity().getIdHotel().equals(idHotel))
+                .filter(quartosEntity -> quartosEntity.getIdHotel().equals(idHotel))
                 .toList();
 
     }
@@ -89,7 +89,7 @@ public class QuartosRepository  {
 
     public boolean removerPorHotel(Integer idHotel) {
         List<QuartosEntity> deleteQuartosEntityList = quartosEntityList.stream()
-                .filter(quartosEntity -> quartosEntity.getHoteisEntity().getIdHotel().equals(idHotel))
+                .filter(quartosEntity -> quartosEntity.getIdHotel().equals(idHotel))
                 .toList();
 
         quartosEntityList.removeAll(deleteQuartosEntityList);

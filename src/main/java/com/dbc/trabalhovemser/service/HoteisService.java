@@ -50,5 +50,9 @@ public class HoteisService {
         hoteisRepository.delete(id);
     }
 
+    public HoteisDTO getPorId(Integer idHotel) throws RegraDeNegocioException {
+        HoteisEntity hoteisEntity= hoteisRepository.getPorId(idHotel);
+        return  objectMapper.convertValue(hoteisEntity, HoteisDTO.class);
+    }
 }
 
