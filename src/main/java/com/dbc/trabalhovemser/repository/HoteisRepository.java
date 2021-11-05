@@ -27,6 +27,14 @@ public class HoteisRepository {
 
 
     }
+    public HoteisEntity getPorId(Integer id) throws RegraDeNegocioException {
+        HoteisEntity hoteisEntity = listaHoteisEntity.stream()
+                .filter(hotel -> hotel.getIdHotel().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Hotel não encontrado"));
+
+        return hoteisEntity;
+    }
 
     public List<HoteisEntity> list(){return listaHoteisEntity;}
 

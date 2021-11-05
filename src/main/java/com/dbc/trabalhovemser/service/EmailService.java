@@ -43,6 +43,22 @@ public class EmailService {
         return usuarioDTO;
     }
 
+    public UsuarioDTO enviarDeleteUsuario(UsuarioDTO usuarioDTO) throws MessagingException, IOException, TemplateException {
+        MimeMessage mimeMessage = emailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+        helper.setFrom(remetente);
+        helper.setTo(usuarioDTO.getEmail());
+        helper.setSubject("Usuario cadastrado");
+        Template template = configuration.getTemplate("email-template.ftl");
+        Map<String, Object> dados = new HashMap<>();
+        dados.put("nome", usuarioDTO.getNome());
+        dados.put("remetente", remetente);
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, dados);
+        helper.setText(html, true);
+        emailSender.send(mimeMessage);
+        return usuarioDTO;
+    }
+
     public UsuarioDTO enviarCadastroReserva(UsuarioDTO usuarioDTO) throws MessagingException, IOException, TemplateException {
         MimeMessage mimeMessage = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
@@ -56,7 +72,21 @@ public class EmailService {
         helper.setText(html, true);
         emailSender.send(mimeMessage);
         return usuarioDTO;
-
+    }
+    public UsuarioDTO enviarDeleteReserva(UsuarioDTO usuarioDTO) throws MessagingException, IOException, TemplateException {
+        MimeMessage mimeMessage = emailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+        helper.setFrom(remetente);
+        helper.setTo(usuarioDTO.getEmail());
+        helper.setSubject("Usuario cadastrado");
+        Template template = configuration.getTemplate("email-template.ftl");
+        Map<String, Object> dados = new HashMap<>();
+        dados.put("nome", usuarioDTO.getNome());
+        dados.put("remetente", remetente);
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, dados);
+        helper.setText(html, true);
+        emailSender.send(mimeMessage);
+        return usuarioDTO;
     }
 }
 

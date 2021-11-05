@@ -2,6 +2,7 @@ package com.dbc.trabalhovemser.controller;
 
 import com.dbc.trabalhovemser.dto.UsuarioCreateDTO;
 import com.dbc.trabalhovemser.dto.UsuarioDTO;
+import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.service.UsuarioService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -22,56 +23,54 @@ import java.util.List;
 public class UsuarioController {
     private final UsuarioService usuarioService;
 
-    @ApiOperation(value = "Retorna uma lista de pessoas")
+    @ApiOperation(value = "Retorna todos usuarios")
     @ApiResponses(value ={
-            @ApiResponse(code = 200, message = "Retorna a lista de pessoas"),
-            @ApiResponse(code = 400, message = "Você não tem permissão para acessar este recurso"),
-            @ApiResponse(code = 500, message = "Foi gerada um exceção"),
+            @ApiResponse(code = 200, message = "Lista gerada com sucesso"),
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
     @GetMapping
-    public List<UsuarioDTO> list() {
-        return usuarioService.list();
+    public List<UsuarioDTO> list() {return usuarioService.list();
     }
 
-    @ApiOperation(value = "Cria um usuario")
+    @ApiOperation(value = "Cria um novo usuario")
     @ApiResponses(value ={
-            @ApiResponse(code = 200, message = "Pessoa criada com sucesso"),
-            @ApiResponse(code = 400, message = "Você não tem permissão para acessar este recurso"),
-            @ApiResponse(code = 500, message = "Foi gerada um exceção"),
+            @ApiResponse(code = 200, message = "Usuario criado com sucesso"),
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
     @PostMapping
-    public UsuarioDTO create(@RequestBody @Valid UsuarioCreateDTO usuarioCreateDTO) throws Exception {
+    public UsuarioDTO create(@RequestBody @Valid UsuarioCreateDTO usuarioCreateDTO) throws RegraDeNegocioException {
         log.info("Criando usuario");
         UsuarioDTO usuarioDTO = usuarioService.create(usuarioCreateDTO);
         log.info("Usuario criado com sucesso");
         return usuarioDTO;
     }
 
-    @ApiOperation(value = "Atualiza uma pessoa pelo ID")
+    @ApiOperation(value = "Atualiza um usuario")
     @ApiResponses(value ={
-            @ApiResponse(code = 200, message = "Pessoa atualizada com sucesso"),
-            @ApiResponse(code = 400, message = "Você não tem permissão para acessar este recurso"),
-            @ApiResponse(code = 500, message = "Foi gerada um exceção"),
+            @ApiResponse(code = 200, message = "Usuario atualizado com sucesso"),
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
     @PutMapping("/{idUsuario}")
-    public UsuarioDTO update(@PathVariable("idUsuario") Integer id,
-                            @RequestBody @Valid UsuarioCreateDTO usuarioCreateDTO) throws Exception {
-        log.info("Atualizar pessoa");
+    public UsuarioDTO update(@PathVariable("idUsuario") Integer id, @RequestBody @Valid UsuarioCreateDTO usuarioCreateDTO) throws RegraDeNegocioException {
+        log.info("Atualizar usuario");
         UsuarioDTO usuarioDTO = usuarioService.update(id, usuarioCreateDTO);
-        log.info("Pessoa atualizada");
+        log.info("Usuario atualizado");
         return usuarioDTO;
     }
 
-    @ApiOperation(value = "Deleta uma pessoa pelo ID")
+    @ApiOperation(value = "Deleta um usuario")
     @ApiResponses(value ={
-            @ApiResponse(code = 200, message = "Pessoa deletada com sucesso"),
-            @ApiResponse(code = 400, message = "Você não tem permissão para acessar este recurso"),
-            @ApiResponse(code = 500, message = "Foi gerada um exceção"),
+            @ApiResponse(code = 200, message = "Usuario deletado com sucesso"),
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
     @DeleteMapping("/{idUsuario}")
-    public void delete(@PathVariable("idUsuario") @NotNull Integer id) throws Exception {
-        log.info("Deletando pessoa");
+    public void delete(@PathVariable("idUsuario") @NotNull Integer id) throws RegraDeNegocioException {
+        log.info("Deletando usuario");
         usuarioService.delete(id);
-        log.info("Pessoa deletada");
+        log.info("Usuario deletado");
     }
 }
