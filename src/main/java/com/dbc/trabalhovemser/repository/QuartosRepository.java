@@ -14,7 +14,7 @@ public class QuartosRepository  {
     private AtomicInteger COUNTERQUARTOS= new AtomicInteger();
 
     public QuartosRepository() {
-        //quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), "1", "1", "Tiago"));
+       // quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), "1", "1", "Tiago"));
     }
 
 
@@ -26,11 +26,11 @@ public class QuartosRepository  {
     }
 
 
-    public QuartosEntity update(Integer id, QuartosEntity quartosEntity) throws Exception {
+    public QuartosEntity update(Integer id, QuartosEntity quartosEntity) throws RegraDeNegocioException {
         QuartosEntity quartoRecuperado = quartosEntityList.stream()
                 .filter(quartoEntity -> quartoEntity.getIdQuarto().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Quarto não Encontrado"));
+                .orElseThrow(() -> new RegraDeNegocioException("Quarto não Encontrado"));
 
         quartosEntity.setIdQuarto(quartoRecuperado.getIdQuarto());
 
@@ -67,11 +67,11 @@ public class QuartosRepository  {
     }
 
 
-    public QuartosEntity getQuartoPorId(Integer id) throws Exception {
+    public QuartosEntity getQuartoPorId(Integer id) throws RegraDeNegocioException {
         QuartosEntity quartoRecuperado = quartosEntityList.stream()
                 .filter(quartoEntity -> quartoEntity.getIdQuarto().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Quarto não Encontrado"));
+                .orElseThrow(() -> new RegraDeNegocioException("Quarto não Encontrado"));
 
         return quartoRecuperado;
 
