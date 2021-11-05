@@ -1,33 +1,52 @@
-//package com.dbc.trabalhovemser.service;
-//
-//import com.dbc.exceptions.BancoDeDadosException;
-//import com.dbc.model.Usuario;
-//import com.dbc.repository.UsuarioRepository;
-//
-//public class UsuarioService {
-//    private UsuarioRepository usuarioRepository;
-//
-//    public UsuarioService(){
-//        this.usuarioRepository = new UsuarioRepository();
-//    }
-//
-//    public void adicionarUsuario(Usuario usuario){
-//        try {
-//            Usuario novoUsuario = usuarioRepository.adicionar(usuario);
-//            System.out.println("Usuário adicionando com sucesso!!! " + novoUsuario);
-//        }catch (BancoDeDadosException e){
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    public Usuario getUsuarioPorId(Integer id){
-//        try {
-//           return usuarioRepository.getUsuarioPorId(id);
-//        } catch (BancoDeDadosException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
-//
-//
-//}
+package com.dbc.trabalhovemser.service;
+
+
+import com.dbc.trabalhovemser.dto.UsuarioCreateDTO;
+import com.dbc.trabalhovemser.dto.UsuarioDTO;
+import com.dbc.trabalhovemser.entity.UsuarioEntity;
+import com.dbc.trabalhovemser.repository.UsuarioRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.v3.oas.models.media.EmailSchema;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+@RequiredArgsConstructor
+public class UsuarioService {
+    private final UsuarioRepository usuarioRepository;
+    private final ObjectMapper objectMapper;
+//    private final EmailService emailService;
+
+    public UsuarioDTO create(UsuarioCreateDTO usuarioCreateDTO) throws Exception {
+        UsuarioEntity usuarioEntity = objectMapper.convertValue(usuarioCreateDTO, UsuarioEntity.class);
+        UsuarioEntity usuarioCriar = usuarioRepository.create(usuarioEntity);
+        UsuarioDTO usuarioDTO = objectMapper.convertValue(usuarioCriar, UsuarioDTO.class);
+//      emailService.enviarEmailSimples(pessoaDTO);
+        return usuarioDTO;
+    }
+
+    public List<UsuarioDTO> list () {
+        return usuarioRepository.list().stream()
+                .map(x-> objectMapper.convertValue(x, UsuarioDTO.class))
+                .collect(Collectors.toList());
+    }
+
+    public UsuarioDTO update (Integer id,
+                             UsuarioCreateDTO usuarioCreateDTO) throws Exception {
+        UsuarioEntity usuarioEntity = objectMapper.convertValue(usuarioCreateDTO, UsuarioEntity.class);
+        UsuarioEntity usuarioAtt = usuarioRepository.update(id, usuarioEntity);
+        UsuarioDTO dto = objectMapper.convertValue(usuarioAtt, UsuarioDTO.class);
+//      emailService.enviarEmailComTemplate(dto);
+        return dto;
+
+    }
+
+    public void delete (Integer id) throws Exception {
+        UsuarioEntity usuarioEntity = usuarioRepository.buscarPorId(id);
+        usuarioRepository.delete(id);
+        UsuarioDTO usuarioDTO = objectMapper.convertValue(usuarioEntity,UsuarioDTO.class);
+//      emailService.enviarEmailComTemplateDelete(pessoaDTO);
+    }
+}
