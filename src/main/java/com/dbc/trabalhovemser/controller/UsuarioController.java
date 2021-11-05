@@ -40,7 +40,7 @@ public class UsuarioController {
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
     @GetMapping("/{IdUsuario}")
-    public List<UsuarioDTO> listById(@PathVariable("idUsuario") Integer idUsuario) throws RegraDeNegocioException {
+    public UsuarioDTO listById(@PathVariable("idUsuario") Integer idUsuario) throws RegraDeNegocioException {
         return usuarioService.getPorId(idUsuario);
     }
 

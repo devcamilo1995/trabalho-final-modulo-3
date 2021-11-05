@@ -12,5 +12,5 @@ public class ReservaEntity {
     private Integer idHotel;
     private Integer idQuarto;
     private Integer idUsuario;
-    private LocalDate dataReserva;
+//    private LocalDate dataReserva;
 }

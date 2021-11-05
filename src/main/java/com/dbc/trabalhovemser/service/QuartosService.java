@@ -49,9 +49,9 @@ public class QuartosService {
     }
 
     public QuartosDTO getQuartoPorId(Integer id) throws Exception {
-
         QuartosEntity quartosEntity= quartosRepository.getQuartoPorId(id);
         QuartosDTO dto = objectMapper.convertValue(quartosEntity, QuartosDTO.class);
+        dto.setHoteisDTO(hoteisService.getPorId(quartosEntity.getIdHotel()));
         return dto;
     }
 

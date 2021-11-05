@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-
 public class ReservaDTO {
     private Integer idReserva;
 
@@ -31,7 +30,7 @@ public class ReservaDTO {
     @ApiModelProperty(value = "Usuario")
     private UsuarioDTO usuarioDTO;
 
-    @NotNull
-    @ApiModelProperty(value = "Data")
-    private LocalDate dataReserva;
+//    @NotNull
+//    @ApiModelProperty(value = "Data")
+//    private LocalDate dataReserva;
 }
