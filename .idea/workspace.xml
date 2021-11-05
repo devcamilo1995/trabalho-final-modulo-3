@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="8b880e46-aa2e-464d-8b99-493106575bb7" name="Changes" comment="trabalho atualizado">
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -14,6 +15,16 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/UsuarioRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/EmailService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/UsuarioService.java" afterDir="false" />
+=======
+    <list default="true" id="8b880e46-aa2e-464d-8b99-493106575bb7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/HoteisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/HoteisController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/HoteisCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/HoteisCreateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/HoteisDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/HoteisDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/HoteisEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/HoteisEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/HoteisRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/HoteisRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/HoteisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/HoteisService.java" afterDir="false" />
+>>>>>>> eee601f97799aafb0209232b9153959f694a1b25
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +60,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
@@ -61,6 +73,9 @@
       <recent name="com.dbc.trabalhovemser.dto" />
       <recent name="com.dbc.trabalhovemser.client" />
     </key>
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+>>>>>>> eee601f97799aafb0209232b9153959f694a1b25
   </component>
   <component name="RunManager">
     <configuration name="TrabalhoVemserApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
