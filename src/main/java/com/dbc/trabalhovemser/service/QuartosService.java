@@ -24,7 +24,11 @@ public class QuartosService {
         return quartosRepository.listar().stream()
                 .map(quarto -> {
                     QuartosDTO quartosDTO = objectMapper.convertValue(quarto, QuartosDTO.class);
-                    quartosDTO.setHoteisDTO(hoteisService);
+                    try {
+                        quartosDTO.setHoteisDTO(hoteisService.getPorId(quarto.getIdHotel()));
+                    } catch (RegraDeNegocioException e) {
+                        e.printStackTrace();
+                    }
                     return quartosDTO;
                 })
                 .collect(Collectors.toList());

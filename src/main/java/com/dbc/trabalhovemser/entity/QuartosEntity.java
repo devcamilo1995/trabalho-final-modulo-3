@@ -14,4 +14,5 @@ public class QuartosEntity {
     private Integer numeroQuarto;
     private Number valorDiaria;
     private String descricao;
+
 }
