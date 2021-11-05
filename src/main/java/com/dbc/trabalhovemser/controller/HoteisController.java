@@ -2,7 +2,6 @@ package com.dbc.trabalhovemser.controller;
 
 import com.dbc.trabalhovemser.dto.HoteisCreateDTO;
 import com.dbc.trabalhovemser.dto.HoteisDTO;
-import com.dbc.trabalhovemser.dto.QuartosDTO;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.service.HoteisService;
 import io.swagger.annotations.ApiOperation;
@@ -21,7 +20,7 @@ import java.util.List;
 @RequestMapping("/hoteis")
 @Slf4j
 @RequiredArgsConstructor
-public class HoteisController {
+public class HoteisController{
     private final HoteisService hoteisService;
 
     @ApiOperation(value = "Lista de Hoteis")
