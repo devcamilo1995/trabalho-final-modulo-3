@@ -17,7 +17,7 @@ public class QuartosDTO {
     private Integer idQuarto;
 
     @NotNull
-    private HoteisEntity hoteisEntity;
+    private HoteisDTO hoteisDTO;
 
     @NotNull
     private Integer numeroQuarto;

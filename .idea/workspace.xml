@@ -6,12 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="8b880e46-aa2e-464d-8b99-493106575bb7" name="Changes" comment="trabalho atualizado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/UsuarioCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/UsuarioCreateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/UsuarioDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/UsuarioDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/UsuarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/QuartosCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/QuartosCreateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/QuartosDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/QuartosDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/QuartosEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/QuartosEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/HoteisRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/HoteisRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/QuartosRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/QuartosRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/QuartosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/QuartosService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/controller/QuartosController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/controller/QuartosController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/controller/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/controller/UsuarioController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/UsuarioCreateDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/UsuarioCreateDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/UsuarioDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/UsuarioDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/repository/QuartosRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/repository/QuartosRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/repository/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/repository/UsuarioRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/QuartosService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/QuartosService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/UsuarioService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
