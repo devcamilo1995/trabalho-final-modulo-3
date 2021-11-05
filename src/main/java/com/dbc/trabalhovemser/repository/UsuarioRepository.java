@@ -20,11 +20,12 @@ public class UsuarioRepository {
 
     public UsuarioRepository() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        listaUsuario.add(new UsuarioEntity(COUNTER.incrementAndGet(), "Matheus", "41286811805", LocalDate.parse("20/06/1995", formatter), "matheus.camilo1617@gmail.com", TipoUsuario.COMUM));
+        listaUsuario.add(new UsuarioEntity(COUNTER.incrementAndGet(), "Matheus", "12345678910", LocalDate.parse("20/06/1995", formatter), "matheus.camilo1617@gmail.com", TipoUsuario.COMUM));
+        listaUsuario.add(new UsuarioEntity(COUNTER.incrementAndGet(), "Guilherme", "12345678911", LocalDate.parse("20/06/1995", formatter), "matheus.camilo1617@gmail.com", TipoUsuario.COMUM));
+        listaUsuario.add(new UsuarioEntity(COUNTER.incrementAndGet(), "Tiago", "12345678912", LocalDate.parse("20/06/1995", formatter), "matheus.camilo1617@gmail.com", TipoUsuario.COMUM));
     }
 
-    public UsuarioEntity create(UsuarioEntity usuarioEntity) throws RegraDeNegocioException {
-
+    public UsuarioEntity create(UsuarioEntity usuarioEntity){
         usuarioEntity.setIdUsuario(COUNTER.incrementAndGet());
         listaUsuario.add(usuarioEntity);
         return usuarioEntity;
@@ -34,8 +35,7 @@ public class UsuarioRepository {
         return listaUsuario;
     }
 
-    public UsuarioEntity update(Integer id,
-                                UsuarioEntity usuarioEntity) throws Exception {
+    public UsuarioEntity update(Integer id, UsuarioEntity usuarioEntity) throws RegraDeNegocioException {
         UsuarioEntity usuarioEntityRecuperar = listaUsuario.stream()
                 .filter(x -> x.getIdUsuario().equals(id))
                 .findFirst()
@@ -48,7 +48,7 @@ public class UsuarioRepository {
         return usuarioEntityRecuperar;
     }
 
-    public void delete(Integer id) throws Exception {
+    public void delete(Integer id) throws RegraDeNegocioException {
         UsuarioEntity usuarioEntity = listaUsuario.stream()
                 .filter(x -> x.getIdUsuario().equals(id))
                 .findFirst()
