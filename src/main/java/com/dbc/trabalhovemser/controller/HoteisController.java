@@ -47,5 +47,25 @@ public class HoteisController {
         return hoteisDTO;
     }
 
+    @ApiOperation(value = "Update um hotel")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Hotel atualizado"),
+            @ApiResponse(code = 400, message = "Você não tem permissão para acessar este recurso"),
+            @ApiResponse(code = 500, message = "Foi gerada um execeção")
+    })
+    @PutMapping("/{idHotel}")
+    public HoteisDTO update(@Valid @PathVariable("idHotel") Integer id,
+                             @Valid @RequestBody HoteisCreateDTO hoteisCreateDTO) throws Exception {
+        log.info("Atualizando hotel");
+        HoteisDTO hotel = hoteisService.update(id, hoteisCreateDTO);
+        log.info("Hotel atualizado com sucesso");
+
+        return hotel;
+    }
+
+    @DeleteMapping("/{idHotel}")
+    public void delete(@PathVariable("idHotel") Integer id){
+        hoteisService.delete();
+    }
+
 
 }

@@ -35,7 +35,29 @@ public class HoteisRepository {
         return hoteisEntity;
     }
 
+    public HoteisEntity update(Integer id, HoteisEntity hoteisEntityAtualizado) throws Exception {
+        HoteisEntity hoteisEntity = listaHoteisEntity.stream()
+                .filter(hotel -> hotel.getIdHotel().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Hotel não encontrado"));
+        hoteisEntity.setIdHotel(id);
+        hoteisEntity.setNomeHotel(hoteisEntityAtualizado.getNomeHotel());
+        hoteisEntity.setNomeEstado(hoteisEntityAtualizado.getNomeEstado());
+        hoteisEntity.setNomecidade(hoteisEntityAtualizado.getNomecidade());
+        hoteisEntity.setCep(hoteisEntityAtualizado.getCep());
+        hoteisEntity.setNumero(hoteisEntityAtualizado.getNumero());
+        hoteisEntity.setLogradouro(hoteisEntityAtualizado.getLogradouro());
+
+        return hoteisEntity;
+    }
+
+    public void delete(Integer id) throws Exception {
+        HoteisEntity hoteisEntityRecuperado = listaHoteisEntity.stream()
+                .filter(hotel -> hotel.getIdHotel().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
+        listaHoteisEntity.remove(hoteisEntityRecuperado);
+    }
+
 }
-
-
 

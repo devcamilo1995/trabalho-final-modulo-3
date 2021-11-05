@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8b880e46-aa2e-464d-8b99-493106575bb7" name="Changes" comment="trabalho atualizado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/config/SpringFoxConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/config/SpringFoxConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/HoteisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/HoteisController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/HoteisRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/HoteisRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/HoteisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/HoteisService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
