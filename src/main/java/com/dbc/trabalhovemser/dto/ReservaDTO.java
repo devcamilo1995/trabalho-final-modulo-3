@@ -7,7 +7,6 @@ import com.dbc.trabalhovemser.entity.UsuarioEntity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
-<<<<<<< HEAD
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
@@ -16,9 +15,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-=======
-
->>>>>>> e3158f2c05f5319b52dedf1eb457d6b5a07281e3
 public class ReservaDTO {
     private Integer idReserva;
 
