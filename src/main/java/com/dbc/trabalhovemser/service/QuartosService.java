@@ -4,6 +4,7 @@ package com.dbc.trabalhovemser.service;
 import com.dbc.trabalhovemser.dto.QuartosCreateDTO;
 import com.dbc.trabalhovemser.dto.QuartosDTO;
 import com.dbc.trabalhovemser.entity.QuartosEntity;
+import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.repository.QuartosRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -59,5 +60,9 @@ public class QuartosService {
         return quartosDTO1;
 
 
+    }
+
+    public void delete(Integer id) throws RegraDeNegocioException {
+        quartosRepository.delete(id);
     }
 }
