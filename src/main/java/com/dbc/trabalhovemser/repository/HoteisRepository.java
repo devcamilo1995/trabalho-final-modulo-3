@@ -2,6 +2,7 @@ package com.dbc.trabalhovemser.repository;
 
 
 import com.dbc.trabalhovemser.entity.HoteisEntity;
+import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -27,7 +28,12 @@ public class HoteisRepository {
     }
 
     public List<HoteisEntity> list(){return listaHoteisEntity;}
-    
+
+    public HoteisEntity create(HoteisEntity hoteisEntity) throws RegraDeNegocioException{
+        hoteisEntity.setIdHotel(COUNTER.incrementAndGet());
+        listaHoteisEntity.add(hoteisEntity);
+        return hoteisEntity;
+    }
 
 }
 

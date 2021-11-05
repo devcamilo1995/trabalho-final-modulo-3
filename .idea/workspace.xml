@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/HoteisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/HoteisController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/HoteisCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/HoteisCreateDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/HoteisDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/HoteisDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/HoteisEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/HoteisEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/HoteisRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/repository/HoteisRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/HoteisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/HoteisService.java" afterDir="false" />
     </list>

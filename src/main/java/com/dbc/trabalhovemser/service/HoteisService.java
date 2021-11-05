@@ -1,18 +1,24 @@
 package com.dbc.trabalhovemser.service;
 
 
+import com.dbc.trabalhovemser.dto.HoteisCreateDTO;
 import com.dbc.trabalhovemser.dto.HoteisDTO;
+import com.dbc.trabalhovemser.entity.HoteisEntity;
+import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.repository.HoteisRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class HoteisService {
-    private HoteisRepository hoteisRepository;
-    private ObjectMapper objectMapper;
+    private final HoteisRepository hoteisRepository;
+    private final ObjectMapper objectMapper;
 
 
     public List<HoteisDTO> list(){
@@ -21,61 +27,12 @@ public class HoteisService {
                 .collect(Collectors.toList());
     }
 
-//    public void adicionar(Hoteis hoteis) {
-//        try {
-//            Hoteis hotelAdicionado = hoteisRepository.adicionar(hoteis);
-////            System.out.println("Hotel adicionado com sucesso! " + hotelAdicionado);
-//        } catch (BancoDeDadosException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    // remoção
-//    public void removerHotel(Integer id) {
-//        try {
-//            boolean conseguiuRemover = hoteisRepository.remover(id);
-////            System.out.println("hotel removido? " + conseguiuRemover + "| com id=" + id);
-//        } catch (BancoDeDadosException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    // atualização de um objeto
-//    public void editarHotel(Integer id, Hoteis hoteis) {
-//        try {
-//            boolean conseguiuEditar = hoteisRepository.editar(id, hoteis);
-////            System.out.println("Hotel editado? " + conseguiuEditar + "| com id=" + id);
-//        } catch (BancoDeDadosException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    // leitura
-//    public void listarHoteis() {
-//        try {
-//            List<Hoteis> listar = hoteisRepository.listar();
-//            listar.forEach(System.out::println);
-//        } catch (BancoDeDadosException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    public void listarHoteisPorCidade(Integer idCidade) {
-//        try {
-//            hoteisRepository.listarHoteisPorCidade(idCidade).forEach(System.out::println);
-//        } catch (BancoDeDadosException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    public Hoteis getHoteisPorId(Integer Id){
-//        try {
-//            return hoteisRepository.getHoteisPorId(Id);
-//        } catch (BancoDeDadosException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
+    public HoteisDTO create(HoteisCreateDTO hoteisCreateDTO) throws RegraDeNegocioException {
+        HoteisEntity entity = objectMapper.convertValue(hoteisCreateDTO, HoteisEntity.class);
+        HoteisEntity hotelCriado = hoteisRepository.create(entity);
+        HoteisDTO dto = objectMapper.convertValue(hotelCriado, HoteisDTO.class);
+        return dto;
+    }
 
 }
 
