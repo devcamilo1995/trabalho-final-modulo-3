@@ -1,78 +1,69 @@
 package com.dbc.trabalhovemser.repository;
 
 
+import com.dbc.trabalhovemser.dto.TipoUsuario;
 import com.dbc.trabalhovemser.entity.UsuarioEntity;
+import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class UsuarioRepository implements Repositorio<Integer, UsuarioEntity> {
-    @Override
-    public Integer getProximoId(Connection connection) throws SQLException {
-        String sql = "SELECT seq_usuario.nextval mysequence from DUAL";
+@Repository
+public class UsuarioRepository {
+    private static List<UsuarioEntity> listaUsuario = new ArrayList<>();
+    private AtomicInteger COUNTER = new AtomicInteger();
 
-        Statement stmt = connection.createStatement();
-        ResultSet res = stmt.executeQuery(sql);
-
-        if(res.next()){
-            return res.getInt("mysequence");
-        }
-        return null;
+    public UsuarioRepository() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        listaUsuario.add(new UsuarioEntity(COUNTER.incrementAndGet(), "Matheus", "41286811805", LocalDate.parse("20/06/1995", formatter), "matheus.camilo1617@gmail.com", TipoUsuario.COMUM));
     }
 
-    @Override
-    public UsuarioEntity adicionar(UsuarioEntity usuario) throws BancoDeDadosException {
-        return null;
-    }
-    @Override
-    public boolean remover(Integer id) throws BancoDeDadosException {
-        return false;
+    public UsuarioEntity create(UsuarioEntity usuarioEntity) throws RegraDeNegocioException {
+
+        usuarioEntity.setIdUsuario(COUNTER.incrementAndGet());
+        listaUsuario.add(usuarioEntity);
+        return usuarioEntity;
     }
 
-    @Override
-    public boolean editar(Integer id, UsuarioEntity usuario) throws BancoDeDadosException {
-        return false;
+    public List<UsuarioEntity> list() {
+        return listaUsuario;
     }
 
-    @Override
-    public List<UsuarioEntity> listar() throws BancoDeDadosException {
-        return null;
+    public UsuarioEntity update(Integer id,
+                                UsuarioEntity usuarioEntity) throws Exception {
+        UsuarioEntity usuarioEntityRecuperar = listaUsuario.stream()
+                .filter(x -> x.getIdUsuario().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Usuario não encontrado"));
+        usuarioEntityRecuperar.setNome(usuarioEntity.getNome());
+        usuarioEntityRecuperar.setCpf(usuarioEntity.getCpf());
+        usuarioEntityRecuperar.setDataNascimento(usuarioEntity.getDataNascimento());
+        usuarioEntityRecuperar.setEmail(usuarioEntity.getEmail());
+        usuarioEntityRecuperar.setTipoUsuario(usuarioEntity.getTipoUsuario());
+        return usuarioEntityRecuperar;
     }
 
-    public UsuarioEntity getUsuarioPorId(Integer id)throws BancoDeDadosException {
-        UsuarioEntity usuario = new UsuarioEntity();
-        Connection con = null;
-
-        try {
-            con = ConexaoBancoDeDados.getConnection();
-            String sql = "SELECT ID_USUARIO, NOME, CPF, DATA_NASCIMENTO  " +
-                    "FROM USUARIO WHERE ID_USUARIO = ? ";
-
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, id);
-            ResultSet res = stmt.executeQuery();
-
-            while (res.next()) {
-
-                usuario.setIdUsuario(res.getInt("id_usuario"));
-                usuario.setNome(res.getString("nome"));
-                usuario.setCpf(res.getString("cpf"));
-                usuario.setDataNascimento(res.getDate("data_nascimento").toLocalDate());
-
-            }
-
-
-        }catch (SQLException e){
-            throw new BancoDeDadosException(e.getCause());
-        }finally {
-            try {
-                if(con != null){
-                    con.close();
-                }
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-        }
-        return usuario;
+    public void delete(Integer id) throws Exception {
+        UsuarioEntity usuarioEntity = listaUsuario.stream()
+                .filter(x -> x.getIdUsuario().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Usuario não encontrado"));
+        listaUsuario.remove(usuarioEntity);
     }
+
+    public UsuarioEntity buscarPorId(Integer id) throws RegraDeNegocioException {
+        UsuarioEntity usuarioEntity = listaUsuario.stream()
+                .filter(x -> x.getIdUsuario().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Usuario não encontrado"));
+        return usuarioEntity;
+    }
+
 }
+
+
