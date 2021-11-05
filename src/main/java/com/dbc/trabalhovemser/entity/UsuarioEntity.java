@@ -1,5 +1,6 @@
 package com.dbc.trabalhovemser.entity;
 
+import com.dbc.trabalhovemser.dto.TipoUsuario;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -13,7 +14,6 @@ public class UsuarioEntity {
     private String nome;
     private String cpf;
     private LocalDate dataNascimento;
-    private String login;
-    private String senha;
-    private Integer tipoUsuario; // 0 - Comum, 1 - Admin.
+    private String email;
+    private TipoUsuario tipoUsuario; // 0 - Comum, 1 - Admin.
 }
