@@ -63,8 +63,8 @@ public class HoteisController {
     }
 
     @DeleteMapping("/{idHotel}")
-    public void delete(@PathVariable("idHotel") Integer id){
-        hoteisService.delete();
+    public void delete(@PathVariable("idHotel") Integer id) throws Exception {
+        hoteisService.delete(id);
     }
 
 
