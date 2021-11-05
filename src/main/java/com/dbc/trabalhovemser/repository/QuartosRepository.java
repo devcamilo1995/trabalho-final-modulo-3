@@ -20,9 +20,9 @@ public class QuartosRepository  {
         quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 1,1, 120.0, "Quarto Casal"));
         quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 2,2, 100.0, "Quarto Solteiro"));
         quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 3,3, 115.0, "Quarto Casal"));
-        quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 4,4, 130.0, "Quarto Lua Bela"));
-        quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 5,5, 140.0, "Quarto Beira Mar"));
-        quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 6,6, 145.0, "Quarto Boa Vista"));
+        quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 1,4, 130.0, "Quarto Lua Bela"));
+        quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 2,5, 140.0, "Quarto Beira Mar"));
+        quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 3,6, 145.0, "Quarto Boa Vista"));
 
     }
 
