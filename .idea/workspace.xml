@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b880e46-aa2e-464d-8b99-493106575bb7" name="Changes" comment="trabalho atualizado">
+    <list default="true" id="8b880e46-aa2e-464d-8b99-493106575bb7" name="Changes" comment="gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/HoteisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/HoteisController.java" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/QuartosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/QuartosController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/QuartosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/QuartosService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/TrabalhoVemserApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/TrabalhoVemserApplication.class" afterDir="false" />
@@ -40,7 +38,6 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/QuartosService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/QuartosService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/UsuarioService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/dbc/trabalhovemser/TrabalhoVemserApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dbc/trabalhovemser/TrabalhoVemserApplicationTests.class" afterDir="false" />
->>>>>>> 7734d2b220e9e1be6d66bbb979d9ba68af0888d8
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,10 +91,8 @@
       <recent name="com.dbc.trabalhovemser.client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TrabalhoVemserApplication">
-    <configuration name="TrabalhoVemserApplication" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+  <component name="RunManager">
+    <configuration name="TrabalhoVemserApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.dbc.trabalhovemser.TrabalhoVemserApplication" />
       <module name="trabalho-final-modulo-3" />
       <extension name="coverage">
@@ -110,16 +105,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TrabalhoVemserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="trabalho-final-modulo-3" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dbc.trabalhovemser.TrabalhoVemserApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.TrabalhoVemserApplication" />
-    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TrabalhoVemserApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
