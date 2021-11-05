@@ -26,6 +26,12 @@ public class HoteisService {
                 .collect(Collectors.toList());
     }
 
+    public List<HoteisDTO> getById(Integer id){
+        return hoteisRepository.getById(id).stream()
+                .map(x -> objectMapper.convertValue(x, HoteisDTO.class))
+                .collect(Collectors.toList());
+    }
+
     public HoteisDTO create(HoteisCreateDTO hoteisCreateDTO) throws RegraDeNegocioException {
         HoteisEntity entity = objectMapper.convertValue(hoteisCreateDTO, HoteisEntity.class);
         HoteisEntity hotelCriado = hoteisRepository.create(entity);

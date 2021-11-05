@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 @Repository
 public class HoteisRepository {
@@ -28,6 +29,12 @@ public class HoteisRepository {
     }
 
     public List<HoteisEntity> list(){return listaHoteisEntity;}
+
+    public List<HoteisEntity> getById(Integer id){
+        return listaHoteisEntity.stream()
+                .filter(x -> x.getIdHotel().equals(id))
+                .collect(Collectors.toList());
+    }
 
     public HoteisEntity create(HoteisEntity hoteisEntity) throws RegraDeNegocioException{
         hoteisEntity.setIdHotel(COUNTER.incrementAndGet());
