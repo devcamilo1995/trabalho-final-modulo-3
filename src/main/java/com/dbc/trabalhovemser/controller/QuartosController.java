@@ -68,4 +68,18 @@ public class QuartosController {
         return quartosDTO;
     }
 
+    @ApiOperation(value = "Deletando Quarto")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Quarto Deletado com sucesso!"),
+            @ApiResponse(code = 400, message = "voçe não tem permição para usar esse recurso"),
+            @ApiResponse(code = 500, message = "Exceção no sistema!")
+    })
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable ("id") @Valid Integer id) throws Exception {
+        log.info("deletando Quarto");
+        quartosService.delete(id);
+        log.info("Quarto deletado");
+
+    }
+
 }
