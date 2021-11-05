@@ -1,9 +1,11 @@
 package com.dbc.trabalhovemser.repository;
 
+import com.dbc.trabalhovemser.entity.HoteisEntity;
 import com.dbc.trabalhovemser.entity.QuartosEntity;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import org.springframework.stereotype.Repository;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -11,10 +13,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Repository
 public class QuartosRepository  {
     private  static List<QuartosEntity> quartosEntityList = new ArrayList<>();
-    private AtomicInteger COUNTERQUARTOS= new AtomicInteger();
+    private AtomicInteger COUNTERQUARTOS = new AtomicInteger();
+
 
     public QuartosRepository() {
-       // quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), "1", "1", "Tiago"));
+        quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 1,1, 120.0, "Quarto Casal"));
+        quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 2,2, 100.0, "Quarto Solteiro"));
+        quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 3,3, 115.0, "Quarto Casal"));
+        quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 4,4, 130.0, "Quarto Lua Bela"));
+        quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 5,5, 140.0, "Quarto Beira Mar"));
+        quartosEntityList.add(new QuartosEntity(COUNTERQUARTOS.incrementAndGet(), 6,6, 145.0, "Quarto Boa Vista"));
+
     }
 
 

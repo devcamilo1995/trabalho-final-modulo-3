@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 @ToString
 public class QuartosCreateDTO {
     @NotNull
-    private HoteisEntity hoteisEntity;
+    private Integer idHotel;
 
     @NotNull
     private Integer numeroQuarto;

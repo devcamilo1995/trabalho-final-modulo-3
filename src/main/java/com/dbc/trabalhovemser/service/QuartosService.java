@@ -17,11 +17,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class QuartosService {
     private final QuartosRepository quartosRepository;
+    private final HoteisService hoteisService;
     private final ObjectMapper objectMapper;
 
     public List<QuartosDTO> listarQuartos() {
         return quartosRepository.listar().stream()
-                .map(quarto -> objectMapper.convertValue(quarto, QuartosDTO.class))
+                .map(quarto -> {
+                    QuartosDTO quartosDTO = objectMapper.convertValue(quarto, QuartosDTO.class);
+                    quartosDTO.setHoteisDTO(hoteisService);
+                    return quartosDTO;
+                })
                 .collect(Collectors.toList());
     }
 

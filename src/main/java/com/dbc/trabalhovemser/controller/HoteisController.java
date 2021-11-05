@@ -32,6 +32,11 @@ public class HoteisController{
     }
 
 
+    @GetMapping("/{idHotel}")
+    public List<HoteisDTO> getById(@Valid @PathVariable("idHotel") Integer id){
+        return hoteisService.getById(id);
+    }
+
     @ApiOperation(value = "Cria um Hotel")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Hotel criado"),
             @ApiResponse(code = 400, message = "Você não tem permissão para acessar este recurso"),
