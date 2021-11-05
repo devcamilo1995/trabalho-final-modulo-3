@@ -28,10 +28,10 @@ public class QuartosRepository  {
 
 
 
-    public QuartosEntity adicionar(QuartosEntity object)  {
-        object.setIdQuarto(COUNTERQUARTOS.incrementAndGet());
-        quartosEntityList.add(object);
-        return object;
+    public QuartosEntity adicionar(QuartosEntity quartosEntity)  {
+        quartosEntity.setIdQuarto(COUNTERQUARTOS.incrementAndGet());
+        quartosEntityList.add(quartosEntity);
+        return quartosEntity;
     }
 
 

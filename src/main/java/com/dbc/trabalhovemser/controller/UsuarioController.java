@@ -33,6 +33,17 @@ public class UsuarioController {
     public List<UsuarioDTO> list() {return usuarioService.list();
     }
 
+    @ApiOperation(value = "Retorna todos usuarios")
+    @ApiResponses(value ={
+            @ApiResponse(code = 200, message = "Lista gerada com sucesso"),
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
+    })
+    @GetMapping("/{IdUsuario}")
+    public List<UsuarioDTO> listById(@PathVariable("idUsuario") Integer idUsuario) throws RegraDeNegocioException {
+        return usuarioService.getPorId(idUsuario);
+    }
+
     @ApiOperation(value = "Cria um novo usuario")
     @ApiResponses(value ={
             @ApiResponse(code = 200, message = "Usuario criado com sucesso"),

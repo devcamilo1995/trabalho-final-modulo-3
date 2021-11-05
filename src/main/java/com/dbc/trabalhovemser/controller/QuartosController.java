@@ -44,10 +44,8 @@ public class QuartosController {
             @ApiResponse(code = 400, message = "voçe não tem permição para usar esse recurso"),
             @ApiResponse(code = 500, message = "Exceção no sistema!")
     })
-
     @PostMapping
-    public QuartosDTO create(@Valid @RequestBody QuartosCreateDTO quartosCreate)
-            {
+    public QuartosDTO create(@Valid @RequestBody QuartosCreateDTO quartosCreate) {
         QuartosDTO quartosDTO = quartosService.create(quartosCreate);
         return quartosDTO;
     }

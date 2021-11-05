@@ -17,6 +17,7 @@ public class ReservaService {
     private final ObjectMapper objectMapper;
     private final QuartosService quartosService;
     private final HoteisService hoteisService;
+    private final UsuarioService usuarioService;
 
     public List<ReservaDTO> list(){
         return reservaRepository.list().stream()
@@ -24,7 +25,8 @@ public class ReservaService {
                     ReservaDTO reservaDTO = objectMapper.convertValue(x, ReservaDTO.class);
                     try {
                         reservaDTO.setQuartosDTO(quartosService.getQuartoPorId(x.getIdQuarto()));
-//                        reservaDTO.setHoteisDTO(hoteisService.);
+                        reservaDTO.setHoteisDTO(hoteisService.getPorId(x.getIdHotel()));
+                        reservaDTO.setUsuarioDTO(usuarioService.getPorId(x.getIdUsuario()));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

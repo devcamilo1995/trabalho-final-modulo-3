@@ -1,8 +1,10 @@
 package com.dbc.trabalhovemser.service;
 
 
+import com.dbc.trabalhovemser.dto.HoteisDTO;
 import com.dbc.trabalhovemser.dto.UsuarioCreateDTO;
 import com.dbc.trabalhovemser.dto.UsuarioDTO;
+import com.dbc.trabalhovemser.entity.HoteisEntity;
 import com.dbc.trabalhovemser.entity.UsuarioEntity;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.repository.UsuarioRepository;
@@ -43,9 +45,13 @@ public class UsuarioService {
     }
 
     public void delete (Integer id) throws RegraDeNegocioException {
-        UsuarioEntity usuarioEntity = usuarioRepository.buscarPorId(id);
+        UsuarioEntity usuarioEntity = usuarioRepository.listByIdUsuario(id);
         usuarioRepository.delete(id);
         UsuarioDTO usuarioDTO = objectMapper.convertValue(usuarioEntity,UsuarioDTO.class);
 //      emailService.enviarDeleteUsuario(pessoaDTO);
+    }
+    public UsuarioDTO getPorId(Integer idUsuario) throws RegraDeNegocioException {
+        UsuarioEntity usuarioEntity= usuarioRepository.listByIdUsuario(idUsuario);
+        return  objectMapper.convertValue(usuarioEntity, UsuarioDTO.class);
     }
 }
