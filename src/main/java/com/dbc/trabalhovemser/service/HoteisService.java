@@ -52,6 +52,14 @@ public class HoteisService {
 
     public void delete(Integer id) throws Exception {
         hoteisRepository.delete(id);
+        quartosRepository.listarQuartosPorHotel(id).stream()
+                .forEach(x-> {
+                    try {
+                        quartosRepository.delete(x.getIdQuarto());
+                    } catch (RegraDeNegocioException e) {
+                        e.printStackTrace();
+                    }
+                });
     }
 
     public HoteisDTO getPorId(Integer idHotel) throws RegraDeNegocioException {
