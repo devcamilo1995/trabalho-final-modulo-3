@@ -45,10 +45,10 @@ public class QuartosService {
 
     public QuartosDTO create(Integer id, QuartosCreateDTO quartosCreate) throws RegraDeNegocioException {
         QuartosEntity entity = objectMapper.convertValue(quartosCreate, QuartosEntity.class);
-        HoteisEntity hoteisEntity = hoteisRepository.list().stream()
-                .filter(x -> x.getIdHotel().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new RegraDeNegocioException("Hotel não encontrado"));
+
+        if(listarQuartosPorHotel(id).stream().filter(x-> x.getNumeroQuarto().equals(quartosCreate.getNumeroQuarto())).count() > 0){
+            throw  new RegraDeNegocioException("Quarto já cadastrado");
+        }
 
         entity.setIdHotel(id);
         QuartosEntity quartoCriado = quartosRepository.adicionar(entity);
@@ -59,7 +59,7 @@ public class QuartosService {
         return dto;
     }
 
-    public QuartosDTO getQuartoPorId(Integer id) throws Exception {
+    public QuartosDTO getQuartoPorId(Integer id) throws RegraDeNegocioException {
         QuartosEntity quartosEntity= quartosRepository.getQuartoPorId(id);
         QuartosDTO dto = objectMapper.convertValue(quartosEntity, QuartosDTO.class);
         dto.setHoteisDTO(hoteisService.getPorId(quartosEntity.getIdHotel()));
@@ -71,8 +71,15 @@ public class QuartosService {
 
    }
 
-    public QuartosDTO update(Integer id, QuartosDTO quartosDTO) throws Exception {
+    public QuartosDTO update(Integer id, QuartosDTO quartosDTO) throws RegraDeNegocioException {
         QuartosEntity quartosEntity = objectMapper.convertValue(quartosDTO,QuartosEntity.class);
+
+
+        if(listarQuartosPorHotel(quartosDTO.getHoteisDTO().getIdHotel()).stream().filter(x-> x.getNumeroQuarto().equals(quartosDTO.getNumeroQuarto())).count() > 0){
+            throw  new RegraDeNegocioException("Quarto já cadastrado");
+        }
+
+
         QuartosEntity quartosEntity1 = quartosRepository.update(id,quartosEntity);
 
         QuartosDTO quartosDTO1 = objectMapper.convertValue(quartosEntity1,QuartosDTO.class);
