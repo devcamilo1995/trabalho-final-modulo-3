@@ -60,9 +60,9 @@ public class QuartosController {
 
     @PutMapping("/{id}")
     public QuartosDTO update(@PathVariable("id")@Valid Integer id,
-                              @RequestBody @Valid QuartosDTO quartosDTO) throws Exception {
+                              @RequestBody @Valid QuartosCreateDTO quartosCreateDTO) throws Exception {
         log.info("atualizando Quarto");
-        QuartosDTO quartosDTO1 = quartosService.update(id,quartosDTO);
+        QuartosDTO quartosDTO = quartosService.update(id,quartosCreateDTO);
         log.info("endereço atualizado");
         return quartosDTO;
     }

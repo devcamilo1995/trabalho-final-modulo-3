@@ -71,11 +71,11 @@ public class QuartosService {
 
    }
 
-    public QuartosDTO update(Integer id, QuartosDTO quartosDTO) throws RegraDeNegocioException {
-        QuartosEntity quartosEntity = objectMapper.convertValue(quartosDTO,QuartosEntity.class);
+    public QuartosDTO update(Integer id, QuartosCreateDTO quartosCreateDTO) throws RegraDeNegocioException {
+        QuartosEntity quartosEntity = objectMapper.convertValue(quartosCreateDTO,QuartosEntity.class);
 
 
-        if(listarQuartosPorHotel(quartosDTO.getHoteisDTO().getIdHotel()).stream().filter(x-> x.getNumeroQuarto().equals(quartosDTO.getNumeroQuarto())).count() > 0){
+        if(listarQuartosPorHotel(quartosCreateDTO.getIdHotel()).stream().filter(x-> x.getNumeroQuarto().equals(quartosCreateDTO.getNumeroQuarto())).count() > 0){
             throw  new RegraDeNegocioException("Quarto já cadastrado");
         }
 
@@ -83,6 +83,7 @@ public class QuartosService {
         QuartosEntity quartosEntity1 = quartosRepository.update(id,quartosEntity);
 
         QuartosDTO quartosDTO1 = objectMapper.convertValue(quartosEntity1,QuartosDTO.class);
+        quartosDTO1.setHoteisDTO(hoteisService.getPorId(quartosEntity1.getIdHotel()));
         return quartosDTO1;
 
 
