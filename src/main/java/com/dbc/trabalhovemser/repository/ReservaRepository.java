@@ -3,6 +3,7 @@ package com.dbc.trabalhovemser.repository;
 
 import com.dbc.trabalhovemser.entity.HoteisEntity;
 import com.dbc.trabalhovemser.entity.ReservaEntity;
+import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.service.HoteisService;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -22,11 +23,41 @@ public class ReservaRepository {
 
     public ReservaRepository(){
           listaReservasEntity.add(new ReservaEntity(COUNTER.incrementAndGet(),1,1,1));
+          listaReservasEntity.add(new ReservaEntity(COUNTER.incrementAndGet(),1,1,1));
     }
 
+    //Lista
     public List<ReservaEntity> list(){
         return listaReservasEntity;
-
     }
+
+    //Create
+    public ReservaEntity create(ReservaEntity reservaEntity){
+        reservaEntity.setIdReserva(COUNTER.incrementAndGet());
+        listaReservasEntity.add(reservaEntity);
+        return reservaEntity;
+    }
+    //Update
+    public ReservaEntity update(Integer id, ReservaEntity reservaEntity) throws Exception {
+        ReservaEntity reservaRecuperada = listaReservasEntity.stream()
+                .filter(reserva -> reserva.getIdReserva().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Reserva não encontrada"));
+        reservaRecuperada.setIdQuarto(reservaEntity.getIdQuarto());
+        reservaRecuperada.setIdHotel(reservaEntity.getIdHotel());
+        reservaRecuperada.setIdUsuario(reservaEntity.getIdUsuario());
+
+        return reservaRecuperada;
+    }
+
+    //Deleta
+    public void delete(Integer id) throws RegraDeNegocioException{
+        ReservaEntity reservaEntity = listaReservasEntity.stream()
+                .filter(x -> x.getIdReserva().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Reserva não encontrada"));
+        listaReservasEntity.remove(reservaEntity);
+    }
+
 
 }

@@ -3,6 +3,7 @@ package com.dbc.trabalhovemser.controller;
 
 import com.dbc.trabalhovemser.dto.QuartosCreateDTO;
 import com.dbc.trabalhovemser.dto.QuartosDTO;
+import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.service.QuartosService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -22,9 +23,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 public class QuartosController {
-    @Autowired
     private final QuartosService quartosService;
-
 
     @GetMapping
     @ApiOperation(value = "Lista Quartos")
@@ -44,9 +43,11 @@ public class QuartosController {
             @ApiResponse(code = 400, message = "voçe não tem permição para usar esse recurso"),
             @ApiResponse(code = 500, message = "Exceção no sistema!")
     })
-    @PostMapping
-    public QuartosDTO create(@Valid @RequestBody QuartosCreateDTO quartosCreate) {
-        QuartosDTO quartosDTO = quartosService.create(quartosCreate);
+
+    @PostMapping("/{idHotel}")
+    public QuartosDTO create(@PathVariable("idHotel") Integer id,
+                             @Valid @RequestBody QuartosCreateDTO quartosCreate) throws RegraDeNegocioException {
+        QuartosDTO quartosDTO = quartosService.create(id ,quartosCreate);
         return quartosDTO;
     }
 

@@ -3,9 +3,12 @@ package com.dbc.trabalhovemser.service;
 
 import com.dbc.trabalhovemser.dto.HoteisCreateDTO;
 import com.dbc.trabalhovemser.dto.HoteisDTO;
+import com.dbc.trabalhovemser.dto.QuartosDTO;
 import com.dbc.trabalhovemser.entity.HoteisEntity;
+import com.dbc.trabalhovemser.entity.QuartosEntity;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.repository.HoteisRepository;
+import com.dbc.trabalhovemser.repository.QuartosRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class HoteisService {
     private final HoteisRepository hoteisRepository;
+    private final QuartosRepository quartosRepository;
     private final ObjectMapper objectMapper;
 
 

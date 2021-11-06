@@ -3,8 +3,10 @@ package com.dbc.trabalhovemser.service;
 
 import com.dbc.trabalhovemser.dto.QuartosCreateDTO;
 import com.dbc.trabalhovemser.dto.QuartosDTO;
+import com.dbc.trabalhovemser.entity.HoteisEntity;
 import com.dbc.trabalhovemser.entity.QuartosEntity;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
+import com.dbc.trabalhovemser.repository.HoteisRepository;
 import com.dbc.trabalhovemser.repository.QuartosRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 public class QuartosService {
     private final QuartosRepository quartosRepository;
     private final HoteisService hoteisService;
+    private final HoteisRepository hoteisRepository;
     private final ObjectMapper objectMapper;
 
     public List<QuartosDTO> listarQuartos() {
@@ -40,10 +43,18 @@ public class QuartosService {
                 .collect(Collectors.toList());
     }
 
-    public QuartosDTO create(QuartosCreateDTO quartosCreate) {
+    public QuartosDTO create(Integer id, QuartosCreateDTO quartosCreate) throws RegraDeNegocioException {
         QuartosEntity entity = objectMapper.convertValue(quartosCreate, QuartosEntity.class);
+        HoteisEntity hoteisEntity = hoteisRepository.list().stream()
+                .filter(x -> x.getIdHotel().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Hotel não encontrado"));
+
+        entity.setIdHotel(id);
         QuartosEntity quartoCriado = quartosRepository.adicionar(entity);
         QuartosDTO dto = objectMapper.convertValue(quartoCriado, QuartosDTO.class);
+
+        dto.setHoteisDTO(hoteisService.getPorId(quartoCriado.getIdHotel()));
 
         return dto;
     }
@@ -56,7 +67,6 @@ public class QuartosService {
     }
 
     public void removerQuartoPorHotel(Integer indexHotel) {
-
              quartosRepository.removerPorHotel(indexHotel);
 
    }
