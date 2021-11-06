@@ -48,7 +48,7 @@ public class EmailService {
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
         helper.setFrom(remetente);
         helper.setTo(usuarioDTO.getEmail());
-        helper.setSubject("Usuario cadastrado");
+        helper.setSubject("Usuario deletado");
         Template template = configuration.getTemplate("email-template.ftl");
         Map<String, Object> dados = new HashMap<>();
         dados.put("nome", usuarioDTO.getNome());
