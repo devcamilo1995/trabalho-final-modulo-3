@@ -31,6 +31,7 @@ public class ReservaService {
     private final QuartosService quartosService;
     private final HoteisService hoteisService;
     private final UsuarioService usuarioService;
+    private final EmailService emailService;
 
     //Lista
     public List<ReservaDTO> list(){
@@ -78,7 +79,7 @@ public class ReservaService {
         dto.setHoteisDTO(hoteisService.getPorId(novaReserva.getIdHotel()));
         dto.setQuartosDTO(quartosService.getQuartoPorId(novaReserva.getIdQuarto()));
         dto.setUsuarioDTO(usuarioService.getPorId(novaReserva.getIdUsuario()));
-
+//        emailService.enviarCadastroReserva(dto);
         return dto;
     }
 
@@ -116,7 +117,7 @@ public class ReservaService {
     }
 
     //Deleta
-    public void delete(Integer id) throws RegraDeNegocioException {
+    public  void delete(Integer id) throws RegraDeNegocioException {
         reservaRepository.delete(id);
     }
 

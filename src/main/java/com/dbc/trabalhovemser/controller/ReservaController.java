@@ -5,13 +5,16 @@ import com.dbc.trabalhovemser.dto.ReservaDTO;
 
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.service.ReservaService;
+import freemarker.template.TemplateException;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @Validated
@@ -47,7 +50,7 @@ public class ReservaController {
     }
 
     @DeleteMapping("/{idReserva}")
-    public void deletar(@Valid @PathVariable("idReserva") Integer id) throws RegraDeNegocioException {
+    public void deletar(@Valid @PathVariable("idReserva") Integer id) throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
         log.info("Deletando reserva...");
         reservaService.delete(id);
 
