@@ -55,16 +55,22 @@ public class QuartosService {
     public QuartosDTO create(Integer id, QuartosCreateDTODOIS quartosCreateDTODOIS) throws RegraDeNegocioException {
         QuartosEntity entity = objectMapper.convertValue(quartosCreateDTODOIS, QuartosEntity.class);
 
+        hoteisRepository.getById(id).stream()
+                .filter(x-> x.getIdHotel().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Hotel não encontrado"));                
+
         if(listarQuartosPorHotel(id).stream()
                 .filter(x-> x.getNumeroQuarto().equals(quartosCreateDTODOIS.getNumeroQuarto())).count() > 0){
             throw  new RegraDeNegocioException("Quarto já cadastrado");
         }
 
+
         entity.setIdHotel(id);
         QuartosEntity quartoCriado = quartosRepository.adicionar(entity);
         QuartosDTO dto = objectMapper.convertValue(quartoCriado, QuartosDTO.class);
 
-        dto.setHoteisDTO(hoteisService.getPorId(id));
+        dto.setHoteisDTO(hoteisService.getPorId(id));//
 
         return dto;
     }
