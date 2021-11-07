@@ -1,6 +1,6 @@
 package com.dbc.trabalhovemser.dto;
 
-import com.dbc.trabalhovemser.entity.HoteisEntity;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
@@ -14,19 +14,24 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @ToString
 public class QuartosDTO {
+    @NotNull
     private Integer idQuarto;
 
     @NotNull
+    @ApiModelProperty(value= "Hotel")
     private HoteisDTO hoteisDTO;
 
     @NotNull
+    @ApiModelProperty(value= "Numero Quarto")
     private Integer numeroQuarto;
 
     @NotNull
+    @ApiModelProperty(value= "Valor Diaria")
     private Number valorDiaria;
 
     @NotNull
     @NotBlank
     @Size(max = 110)
+    @ApiModelProperty(value= "Descrição")
     private String descricao;
 }

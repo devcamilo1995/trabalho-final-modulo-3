@@ -4,8 +4,10 @@ import com.dbc.trabalhovemser.dto.TipoUsuario;
 import lombok.*;
 
 import java.time.LocalDate;
+
 @Getter
 @Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString

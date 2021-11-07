@@ -28,10 +28,11 @@ public class UsuarioDTO {
     @NotNull
     @ApiModelProperty(value= "Data de nascimento")
     private LocalDate dataNascimento;
-    @NotNull
+
     @NotBlank
     @ApiModelProperty(value= "E-mail")
     private String email;
+
     @NotNull
     @ApiModelProperty(value= "Tipo de usuario")
     private TipoUsuario tipoUsuario; // 0 - Comum, 1 - Admin.

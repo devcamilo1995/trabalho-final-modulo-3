@@ -84,7 +84,7 @@ public class QuartosService {
 
         QuartosDTO quartosDTO = getQuartoPorId(id);
 
-        if(listarQuartosPorHotel(quartosDTO.getHoteisDTO().getIdHotel()).stream().filter(x-> x.getNumeroQuarto().equals(quartosCreateDTO.getNumeroQuarto())).count() > 0){
+        if(listarQuartosPorHotel(quartosCreateDTO.getIdHotel()).stream().filter(x-> x.getNumeroQuarto().equals(quartosCreateDTO.getNumeroQuarto())).count() > 0){
             throw  new RegraDeNegocioException("Quarto já cadastrado");
         }
 
@@ -92,7 +92,7 @@ public class QuartosService {
 
         QuartosDTO quartosDTO1 = objectMapper.convertValue(quartosEntity1,QuartosDTO.class);
 
-        quartosDTO1.setHoteisDTO(quartosDTO.getHoteisDTO());
+        quartosDTO1.setHoteisDTO(hoteisService.getPorId(quartosCreateDTO.getIdHotel()));
         return quartosDTO1;
 
 
