@@ -14,6 +14,8 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @ToString
 public class QuartosCreateDTO {
+    @NotNull
+    private Integer idHotel;
 
     @NotNull
     private Integer numeroQuarto;
