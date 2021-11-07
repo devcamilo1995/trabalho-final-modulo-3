@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 @Repository
 public class QuartosRepository  {
@@ -70,8 +71,8 @@ public class QuartosRepository  {
 
     public List<QuartosEntity> listarQuartosPorHotel(Integer idHotel) {
         return quartosEntityList.stream()
-                .filter(quartosEntity -> quartosEntity.getIdHotel().equals(idHotel))
-                .toList();
+                .filter(x -> x.getIdHotel().equals(idHotel))
+                .collect(Collectors.toList());
 
     }
 
@@ -90,7 +91,7 @@ public class QuartosRepository  {
     public boolean removerPorHotel(Integer idHotel) {
         List<QuartosEntity> deleteQuartosEntityList = quartosEntityList.stream()
                 .filter(quartosEntity -> quartosEntity.getIdHotel().equals(idHotel))
-                .toList();
+                .collect(Collectors.toList());
 
         quartosEntityList.removeAll(deleteQuartosEntityList);
 
