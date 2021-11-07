@@ -3,8 +3,6 @@ package com.dbc.trabalhovemser.entity;
 
 import lombok.*;
 
-@Getter
-@Setter
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
