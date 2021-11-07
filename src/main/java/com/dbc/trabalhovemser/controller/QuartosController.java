@@ -2,6 +2,7 @@ package com.dbc.trabalhovemser.controller;
 
 
 import com.dbc.trabalhovemser.dto.QuartosCreateDTO;
+import com.dbc.trabalhovemser.dto.QuartosCreateDTODOIS;
 import com.dbc.trabalhovemser.dto.QuartosDTO;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.service.QuartosService;
@@ -57,8 +58,8 @@ public class QuartosController {
 
     @PostMapping("/{idHotel}")
     public QuartosDTO create(@PathVariable("idHotel") Integer id,
-                             @Valid @RequestBody QuartosCreateDTO quartosCreate) throws RegraDeNegocioException {
-        QuartosDTO quartosDTO = quartosService.create(id ,quartosCreate);
+                             @Valid @RequestBody QuartosCreateDTODOIS quartosCreateDTODOIS) throws RegraDeNegocioException {
+        QuartosDTO quartosDTO = quartosService.create(id ,quartosCreateDTODOIS);
         return quartosDTO;
     }
 

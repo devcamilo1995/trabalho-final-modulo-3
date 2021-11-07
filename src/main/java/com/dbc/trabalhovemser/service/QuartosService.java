@@ -2,6 +2,7 @@ package com.dbc.trabalhovemser.service;
 
 
 import com.dbc.trabalhovemser.dto.QuartosCreateDTO;
+import com.dbc.trabalhovemser.dto.QuartosCreateDTODOIS;
 import com.dbc.trabalhovemser.dto.QuartosDTO;
 import com.dbc.trabalhovemser.entity.HoteisEntity;
 import com.dbc.trabalhovemser.entity.QuartosEntity;
@@ -51,10 +52,11 @@ public class QuartosService {
                 .collect(Collectors.toList());
     }
 
-    public QuartosDTO create(Integer id, QuartosCreateDTO quartosCreate) throws RegraDeNegocioException {
-        QuartosEntity entity = objectMapper.convertValue(quartosCreate, QuartosEntity.class);
+    public QuartosDTO create(Integer id, QuartosCreateDTODOIS quartosCreateDTODOIS) throws RegraDeNegocioException {
+        QuartosEntity entity = objectMapper.convertValue(quartosCreateDTODOIS, QuartosEntity.class);
 
-        if(listarQuartosPorHotel(id).stream().filter(x-> x.getNumeroQuarto().equals(quartosCreate.getNumeroQuarto())).count() > 0){
+        if(listarQuartosPorHotel(id).stream()
+                .filter(x-> x.getNumeroQuarto().equals(quartosCreateDTODOIS.getNumeroQuarto())).count() > 0){
             throw  new RegraDeNegocioException("Quarto já cadastrado");
         }
 

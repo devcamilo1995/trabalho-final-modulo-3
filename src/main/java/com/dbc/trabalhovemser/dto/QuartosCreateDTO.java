@@ -12,17 +12,17 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @ToString
 public class QuartosCreateDTO {
-    @NotNull
+    @NotNull(message = "Não pode ser null")
     private Integer idHotel;
 
-    @NotNull
+    @NotNull(message = "Não pode ser null")
     private Integer numeroQuarto;
 
-    @NotNull
+    @NotNull(message = "Não pode ser null")
     private Number valorDiaria;
 
-    @NotNull
-    @NotBlank
+    @NotNull(message = "Não pode ser null")
+    @NotBlank(message = "Não pode estar em branco")
     @Size(max = 110)
     private String descricao;
 }

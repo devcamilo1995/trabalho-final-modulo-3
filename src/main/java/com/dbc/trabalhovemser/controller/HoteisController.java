@@ -32,6 +32,9 @@ public class HoteisController{
     }
 
 
+    @ApiOperation(value = "Lista de Hoteis por id")
+    @ApiResponses(value = {@ApiResponse(code = 400, message = "Você não tem permissão para acessar este recurso"),
+            @ApiResponse(code = 500, message = "Foi gerada um execeção")})
     @GetMapping("/{idHotel}")
     public List<HoteisDTO> getById(@Valid @PathVariable("idHotel") Integer id){
         return hoteisService.getById(id);
@@ -66,6 +69,11 @@ public class HoteisController{
         return hotel;
     }
 
+    @ApiOperation(value = "Delata um hotel")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Hotel deletado"),
+            @ApiResponse(code = 400, message = "Você não tem permissão para acessar este recurso"),
+            @ApiResponse(code = 500, message = "Foi gerada um execeção")
+    })
     @DeleteMapping("/{idHotel}")
     public void delete(@PathVariable("idHotel") Integer id) throws Exception {
         hoteisService.delete(id);

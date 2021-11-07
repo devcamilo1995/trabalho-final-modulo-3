@@ -14,23 +14,23 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @ToString
 public class QuartosDTO {
-    @NotNull
+    @NotNull(message = "Não pode ser null")
     private Integer idQuarto;
 
-    @NotNull
+    @NotNull(message = "Não pode ser null")
     @ApiModelProperty(value= "Hotel")
     private HoteisDTO hoteisDTO;
 
-    @NotNull
+    @NotNull(message = "Não pode ser null")
     @ApiModelProperty(value= "Numero Quarto")
     private Integer numeroQuarto;
 
-    @NotNull
+    @NotNull(message = "Não pode ser null")
     @ApiModelProperty(value= "Valor Diaria")
     private Number valorDiaria;
 
-    @NotNull
-    @NotBlank
+    @NotNull(message = "Não pode ser null")
+    @NotBlank(message = "Não pode estar em branco")
     @Size(max = 110)
     @ApiModelProperty(value= "Descrição")
     private String descricao;

@@ -13,19 +13,16 @@ import javax.validation.constraints.NotNull;
 public class ReservaDTO {
     private Integer idReserva;
 
-    @NotNull
+    @NotNull(message = "Não pode estar null")
     @ApiModelProperty(value = "Hoteis")
     private HoteisDTO hoteisDTO;
 
-    @NotNull
+    @NotNull(message = "Não pode estar null")
     @ApiModelProperty(value = "Quartos")
     private QuartosDTO quartosDTO;
 
-    @NotNull
+    @NotNull(message = "Não pode estar null")
     @ApiModelProperty(value = "Usuario")
     private UsuarioDTO usuarioDTO;
 
-//    @NotNull
-//    @ApiModelProperty(value = "Data")
-//    private LocalDate dataReserva;
 }

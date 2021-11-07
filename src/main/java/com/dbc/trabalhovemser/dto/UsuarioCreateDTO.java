@@ -14,23 +14,28 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @ToString
 public class UsuarioCreateDTO {
-    @NotNull
-    @NotBlank
+
+    @NotNull(message = "Não pode ser null")
+    @NotBlank(message = "Não pode estar em branco")
     @ApiModelProperty(value= "Nome do usuario")
     private String nome;
-    @NotNull
-    @NotBlank
+
+    @NotNull(message = "Não pode ser null")
+    @NotBlank(message = "Não pode estar em branco")
     @Size(max=11, min=11)
     @ApiModelProperty(value= "CPF")
     private String cpf;
-    @NotNull
+
+    @NotNull(message = "Não pode ser null")
     @ApiModelProperty(value= "Data de nascimento")
     private LocalDate dataNascimento;
-    @NotNull
-    @NotBlank
+
+    @NotNull(message = "Não pode ser null")
+    @NotBlank(message = "Não pode estar em branco")
     @ApiModelProperty(value= "E-mail")
     private String email;
-    @NotNull
+
+    @NotNull(message = "Não pode ser null")
     @ApiModelProperty(value= "Tipo de usuario")
     private TipoUsuario tipoUsuario; // 0 - Comum, 1 - Admin.
 }

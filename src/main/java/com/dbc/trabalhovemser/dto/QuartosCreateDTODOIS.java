@@ -1,27 +1,28 @@
 package com.dbc.trabalhovemser.dto;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
+import javax.validation.constraints.Size;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReservaCreateDTO {
+@ToString
+public class QuartosCreateDTODOIS{
 
-    @ApiModelProperty("Id do hotel")
     @NotNull(message = "Não pode ser null")
-    private Integer idHotel;
+    private Integer numeroQuarto;
 
-    @ApiModelProperty("Id do quarto")
     @NotNull(message = "Não pode ser null")
-    private Integer idQuarto;
+    private Number valorDiaria;
 
-    @ApiModelProperty("Id do usuário")
     @NotNull(message = "Não pode ser null")
-    private Integer idUsuario;
+    @NotBlank(message = "Não pode estar em branco")
+    @Size(max = 110)
+    private String descricao;
 }
