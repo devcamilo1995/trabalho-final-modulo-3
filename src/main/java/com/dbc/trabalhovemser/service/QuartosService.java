@@ -39,7 +39,15 @@ public class QuartosService {
 
     public List<QuartosDTO> listarQuartosPorHotel(Integer idHotel) {
         return quartosRepository.listarQuartosPorHotel(idHotel).stream()
-                .map(quarto -> objectMapper.convertValue(quarto, QuartosDTO.class))
+                .map(quarto -> {
+                    QuartosDTO quartosDTO = objectMapper.convertValue(quarto, QuartosDTO.class);
+                    try {
+                        quartosDTO.setHoteisDTO(hoteisService.getPorId(idHotel));
+                    } catch (RegraDeNegocioException e) {
+                        e.printStackTrace();
+                    }
+                    return quartosDTO;
+                })
                 .collect(Collectors.toList());
     }
 
@@ -54,7 +62,7 @@ public class QuartosService {
         QuartosEntity quartoCriado = quartosRepository.adicionar(entity);
         QuartosDTO dto = objectMapper.convertValue(quartoCriado, QuartosDTO.class);
 
-        dto.setHoteisDTO(hoteisService.getPorId(quartoCriado.getIdHotel()));
+        dto.setHoteisDTO(hoteisService.getPorId(id));
 
         return dto;
     }
@@ -71,18 +79,20 @@ public class QuartosService {
 
    }
 
-    public QuartosDTO update(Integer id, QuartosDTO quartosDTO) throws RegraDeNegocioException {
-        QuartosEntity quartosEntity = objectMapper.convertValue(quartosDTO,QuartosEntity.class);
+    public QuartosDTO update(Integer id, QuartosCreateDTO quartosCreateDTO) throws RegraDeNegocioException {
+        QuartosEntity quartosEntity = objectMapper.convertValue(quartosCreateDTO,QuartosEntity.class);
 
+        QuartosDTO quartosDTO = getQuartoPorId(id);
 
-        if(listarQuartosPorHotel(quartosDTO.getHoteisDTO().getIdHotel()).stream().filter(x-> x.getNumeroQuarto().equals(quartosDTO.getNumeroQuarto())).count() > 0){
+        if(listarQuartosPorHotel(quartosDTO.getHoteisDTO().getIdHotel()).stream().filter(x-> x.getNumeroQuarto().equals(quartosCreateDTO.getNumeroQuarto())).count() > 0){
             throw  new RegraDeNegocioException("Quarto já cadastrado");
         }
-
 
         QuartosEntity quartosEntity1 = quartosRepository.update(id,quartosEntity);
 
         QuartosDTO quartosDTO1 = objectMapper.convertValue(quartosEntity1,QuartosDTO.class);
+
+        quartosDTO1.setHoteisDTO(quartosDTO.getHoteisDTO());
         return quartosDTO1;
 
 

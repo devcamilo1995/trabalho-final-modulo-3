@@ -25,16 +25,27 @@ import java.util.List;
 public class QuartosController {
     private final QuartosService quartosService;
 
-    @GetMapping
     @ApiOperation(value = "Lista Quartos")
+    @ApiResponses(value ={
+            @ApiResponse(code = 200, message = "Lista gerada com sucesso"),
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
+    })
+    @GetMapping
     public List<QuartosDTO> list() {
         return quartosService.listarQuartos();
     }
 
-    @GetMapping("/idhotel")
+
     @ApiOperation(value = "Lista de Quartos por ID Hotel")
+    @ApiResponses(value ={
+            @ApiResponse(code = 200, message = "Lista gerada com sucesso"),
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
+    })
+    @GetMapping("/idhotel")
     public List<QuartosDTO> list(@Valid @RequestParam("idHotel") Integer idHotel) {
-        return quartosService.listarQuartos();
+        return quartosService.listarQuartosPorHotel(idHotel);
     }
 
     @ApiOperation(value = "Criando Quartos")
@@ -57,14 +68,13 @@ public class QuartosController {
             @ApiResponse(code = 400, message = "voçe não tem permição para usar esse recurso"),
             @ApiResponse(code = 500, message = "Exceção no sistema!")
     })
-
     @PutMapping("/{id}")
     public QuartosDTO update(@PathVariable("id")@Valid Integer id,
-                              @RequestBody @Valid QuartosDTO quartosDTO) throws Exception {
+                              @RequestBody @Valid QuartosCreateDTO quartosCreateDTO) throws Exception {
         log.info("atualizando Quarto");
-        QuartosDTO quartosDTO1 = quartosService.update(id,quartosDTO);
+        QuartosDTO quartosDTO1 = quartosService.update(id,quartosCreateDTO);
         log.info("endereço atualizado");
-        return quartosDTO;
+        return quartosDTO1;
     }
 
     @ApiOperation(value = "Deletando Quarto")
