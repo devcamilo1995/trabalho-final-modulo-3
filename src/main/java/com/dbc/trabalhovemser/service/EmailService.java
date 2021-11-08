@@ -36,7 +36,7 @@ public class EmailService {
         helper.setFrom(remetente);
         helper.setTo(usuarioDTO.getEmail());
         helper.setSubject("Usuario cadastrado");
-        Template template = configuration.getTemplate("email-template.ftl");
+        Template template = configuration.getTemplate("usuario-templates.ftl");
         Map<String, Object> dados = new HashMap<>();
         dados.put("nome", usuarioDTO.getNome());
         dados.put("remetente", remetente);
@@ -51,7 +51,7 @@ public class EmailService {
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
         helper.setFrom(remetente);
         helper.setTo(reservaDTO.getUsuarioDTO().getEmail());
-        helper.setSubject("Usuario cadastrado");
+        helper.setSubject("Reserva cadastrada");
         Template template = configuration.getTemplate("reserva-templates.ftl");
         Map<String, Object> dados = new HashMap<>();
         dados.put("nome", reservaDTO.getUsuarioDTO().getNome());
