@@ -26,7 +26,6 @@ public class ReservaService {
     private final HoteisRepository hoteisRepository;
     private final QuartosRepository quartosRepository;
     private final UsuarioRepository usuarioRepository;
-
     private final ObjectMapper objectMapper;
     private final QuartosService quartosService;
     private final HoteisService hoteisService;
@@ -79,7 +78,7 @@ public class ReservaService {
         dto.setHoteisDTO(hoteisService.getPorId(novaReserva.getIdHotel()));
         dto.setQuartosDTO(quartosService.getQuartoPorId(novaReserva.getIdQuarto()));
         dto.setUsuarioDTO(usuarioService.getPorId(novaReserva.getIdUsuario()));
-//        emailService.enviarCadastroReserva(dto);
+        emailService.enviarCadastroReserva(dto);
         return dto;
     }
 

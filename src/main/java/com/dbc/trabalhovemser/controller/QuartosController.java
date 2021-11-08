@@ -26,7 +26,7 @@ import java.util.List;
 public class QuartosController {
     private final QuartosService quartosService;
 
-    @ApiOperation(value = "Lista Quartos")
+    @ApiOperation(value = "Listar Quartos")
     @ApiResponses(value ={
             @ApiResponse(code = 200, message = "Lista gerada com sucesso"),
             @ApiResponse(code = 400, message = "Algum dado inconsistente"),
@@ -52,41 +52,43 @@ public class QuartosController {
     @ApiOperation(value = "Criando Quartos")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Quarto Criado com sucesso!"),
-            @ApiResponse(code = 400, message = "voçe não tem permição para usar esse recurso"),
-            @ApiResponse(code = 500, message = "Exceção no sistema!")
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção")
     })
 
     @PostMapping("/{idHotel}")
     public QuartosDTO create(@PathVariable("idHotel") Integer id,
                              @Valid @RequestBody QuartosCreateDTODOIS quartosCreateDTODOIS) throws RegraDeNegocioException {
+        log.info("Criando Quarto");
         QuartosDTO quartosDTO = quartosService.create(id ,quartosCreateDTODOIS);
+        log.info("Quarto criado" );
         return quartosDTO;
     }
 
-    @ApiOperation(value = "Atualizando Quartos Por ID")
+    @ApiOperation(value = "Atualizar Quartos")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Quarto  atualizada com sucesso!"),
-            @ApiResponse(code = 400, message = "voçe não tem permição para usar esse recurso"),
-            @ApiResponse(code = 500, message = "Exceção no sistema!")
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção")
     })
     @PutMapping("/{id}")
     public QuartosDTO update(@PathVariable("id")@Valid Integer id,
                               @RequestBody @Valid QuartosCreateDTO quartosCreateDTO) throws Exception {
-        log.info("atualizando Quarto");
+        log.info("Atualizando Quarto");
         QuartosDTO quartosDTO1 = quartosService.update(id,quartosCreateDTO);
-        log.info("endereço atualizado");
+        log.info("Quarto atualizado");
         return quartosDTO1;
     }
 
-    @ApiOperation(value = "Deletando Quarto")
+    @ApiOperation(value = "Deletar Quarto")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Quarto Deletado com sucesso!"),
-            @ApiResponse(code = 400, message = "voçe não tem permição para usar esse recurso"),
-            @ApiResponse(code = 500, message = "Exceção no sistema!")
+            @ApiResponse(code = 200, message = "Quarto deletado com sucesso!"),
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção")
     })
     @DeleteMapping("/{id}")
     public void delete(@PathVariable ("id") @Valid Integer id) throws Exception {
-        log.info("deletando Quarto");
+        log.info("Deletando quarto");
         quartosService.delete(id);
         log.info("Quarto deletado");
 

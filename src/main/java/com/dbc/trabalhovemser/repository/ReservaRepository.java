@@ -23,7 +23,8 @@ public class ReservaRepository {
 
     public ReservaRepository(){
           listaReservasEntity.add(new ReservaEntity(COUNTER.incrementAndGet(),1,1,1));
-          listaReservasEntity.add(new ReservaEntity(COUNTER.incrementAndGet(),1,1,1));
+          listaReservasEntity.add(new ReservaEntity(COUNTER.incrementAndGet(),2,2,2));
+          listaReservasEntity.add(new ReservaEntity(COUNTER.incrementAndGet(),3,3,3));
     }
 
     //Lista

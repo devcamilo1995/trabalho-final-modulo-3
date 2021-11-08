@@ -16,13 +16,13 @@ public class HoteisRepository {
     private AtomicInteger COUNTER = new AtomicInteger();
 
     public HoteisRepository(){
-        listaHoteisEntity.add(new HoteisEntity(COUNTER.incrementAndGet(), "Hotel Teste", "RS",
+        listaHoteisEntity.add(new HoteisEntity(COUNTER.incrementAndGet(), "Ibis", "RS",
                 "POA", "92332662",105, "logradouro"));
 
-        listaHoteisEntity.add(new HoteisEntity(COUNTER.incrementAndGet(), "Hotel Teste2", "RS",
+        listaHoteisEntity.add(new HoteisEntity(COUNTER.incrementAndGet(), "Lotus", "RS",
                 "POA", "92332662",105, "logradouro"));
 
-        listaHoteisEntity.add(new HoteisEntity(COUNTER.incrementAndGet(), "Hotel Teste3", "RS",
+        listaHoteisEntity.add(new HoteisEntity(COUNTER.incrementAndGet(), "Plaza", "RS",
                 "POA", "92332662",105, "logradouro"));
 
 

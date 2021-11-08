@@ -9,9 +9,13 @@ import com.dbc.trabalhovemser.entity.UsuarioEntity;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.repository.UsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import freemarker.template.TemplateException;
 import io.swagger.v3.oas.models.media.EmailSchema;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import javax.mail.MessagingException;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,11 +26,11 @@ public class UsuarioService {
     private final ObjectMapper objectMapper;
     private final EmailService emailService;
 
-    public UsuarioDTO create(UsuarioCreateDTO usuarioCreateDTO) {
+    public UsuarioDTO create(UsuarioCreateDTO usuarioCreateDTO) throws MessagingException, TemplateException, IOException {
         UsuarioEntity usuarioEntity = objectMapper.convertValue(usuarioCreateDTO, UsuarioEntity.class);
         UsuarioEntity usuarioCriar = usuarioRepository.create(usuarioEntity);
         UsuarioDTO usuarioDTO = objectMapper.convertValue(usuarioCriar, UsuarioDTO.class);
-//      emailService.enviarCadastroUsuario(usuarioDTO);
+        emailService.enviarCadastroUsuario(usuarioDTO);
         return usuarioDTO;
     }
 

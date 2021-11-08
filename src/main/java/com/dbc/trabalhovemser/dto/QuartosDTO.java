@@ -15,6 +15,7 @@ import javax.validation.constraints.Size;
 @ToString
 public class QuartosDTO {
     @NotNull(message = "Não pode ser null")
+    @ApiModelProperty("Id do hotel")
     private Integer idQuarto;
 
     @NotNull(message = "Não pode ser null")
