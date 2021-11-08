@@ -43,7 +43,7 @@
                             <p> "Estamos felizes em ter você em nosso sistema!!" </p>
 
                             <p>Sua reserva foi feita com sucesso.</p>
-                            <p>Hotel: ${hotel} , quarto n° ${quarto} ,${descricao} ,R$ ${diaria},00 </p>
+                            <p>Hotel: ${hotel} ,quarto n° ${quarto} ,${descricao},R$${diaria},00 </p>
 
                             <br>Qualquer dúvida é só contatar o suporte pelo e-mail ${remetente}.<br>
 

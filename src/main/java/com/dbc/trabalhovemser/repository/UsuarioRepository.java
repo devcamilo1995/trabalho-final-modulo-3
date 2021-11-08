@@ -20,9 +20,9 @@ public class UsuarioRepository {
 
     public UsuarioRepository() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        listaUsuario.add(new UsuarioEntity(COUNTER.incrementAndGet(), "Matheus", "41286811805", LocalDate.parse("20/06/1995", formatter), "matheus.camilo1617@gmail.com", TipoUsuario.COMUM));
-        listaUsuario.add(new UsuarioEntity(COUNTER.incrementAndGet(), "Guilherme", "12345678911", LocalDate.parse("20/06/1995", formatter), "matheus.camilo1617@gmail.com", TipoUsuario.COMUM));
-        listaUsuario.add(new UsuarioEntity(COUNTER.incrementAndGet(), "Tiago", "12345678912", LocalDate.parse("20/06/1995", formatter), "matheus.camilo1617@gmail.com", TipoUsuario.COMUM));
+        listaUsuario.add(new UsuarioEntity(COUNTER.incrementAndGet(), "Matheus", "41286811805", LocalDate.parse("20/06/1995", formatter), "mntbooking@outlook.com", TipoUsuario.COMUM));
+        listaUsuario.add(new UsuarioEntity(COUNTER.incrementAndGet(), "Guilherme", "12345678911", LocalDate.parse("20/06/1995", formatter), "mntbooking@outlook.com", TipoUsuario.COMUM));
+        listaUsuario.add(new UsuarioEntity(COUNTER.incrementAndGet(), "Tiago", "12345678912", LocalDate.parse("20/06/1995", formatter), "mntbooking@outlook.com", TipoUsuario.COMUM));
     }
 
     public UsuarioEntity create(UsuarioEntity usuarioEntity){
