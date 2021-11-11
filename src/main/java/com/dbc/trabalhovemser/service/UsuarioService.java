@@ -28,34 +28,41 @@ public class UsuarioService {
 
     public UsuarioDTO create(UsuarioCreateDTO usuarioCreateDTO) throws MessagingException, TemplateException, IOException {
         UsuarioEntity usuarioEntity = objectMapper.convertValue(usuarioCreateDTO, UsuarioEntity.class);
-        UsuarioEntity usuarioCriar = usuarioRepository.create(usuarioEntity);
+        UsuarioEntity usuarioCriar = usuarioRepository.save(usuarioEntity);
         UsuarioDTO usuarioDTO = objectMapper.convertValue(usuarioCriar, UsuarioDTO.class);
         emailService.enviarCadastroUsuario(usuarioDTO);
         return usuarioDTO;
     }
 
     public List<UsuarioDTO> list () {
-        return usuarioRepository.list().stream()
+        return usuarioRepository.findAll().stream()
                 .map(x-> objectMapper.convertValue(x, UsuarioDTO.class))
                 .collect(Collectors.toList());
     }
 
     public UsuarioDTO update (Integer id, UsuarioCreateDTO usuarioCreateDTO) throws RegraDeNegocioException {
         UsuarioEntity usuarioEntity = objectMapper.convertValue(usuarioCreateDTO, UsuarioEntity.class);
-        UsuarioEntity usuarioAtt = usuarioRepository.update(id, usuarioEntity);
+        UsuarioEntity usuarioAtt = usuarioRepository.save(usuarioEntity);
         UsuarioDTO dto = objectMapper.convertValue(usuarioAtt, UsuarioDTO.class);
         return dto;
 
     }
 
     public void delete (Integer id) throws RegraDeNegocioException {
-        UsuarioEntity usuarioEntity = usuarioRepository.listByIdUsuario(id);
-        usuarioRepository.delete(id);
+        UsuarioEntity usuarioEntity = findById(id);
+        usuarioRepository.delete(usuarioEntity);
         UsuarioDTO usuarioDTO = objectMapper.convertValue(usuarioEntity,UsuarioDTO.class);
 //      emailService.enviarDeleteUsuario(pessoaDTO);
     }
-    public UsuarioDTO getPorId(Integer idUsuario) throws RegraDeNegocioException {
-        UsuarioEntity usuarioEntity= usuarioRepository.listByIdUsuario(idUsuario);
-        return  objectMapper.convertValue(usuarioEntity, UsuarioDTO.class);
-    }
+//    public UsuarioDTO getPorId(Integer idUsuario) throws RegraDeNegocioException {
+//        UsuarioEntity usuarioEntity= usuarioRepository.listByIdUsuario(idUsuario);
+//        return  objectMapper.convertValue(usuarioEntity, UsuarioDTO.class);
+
+
+//    }
+public UsuarioEntity findById(Integer id) throws RegraDeNegocioException {
+    UsuarioEntity entity = usuarioRepository.findById(id)
+            .orElseThrow(() -> new RegraDeNegocioException("pessoa não econtrada"));
+    return entity;
+}
 }
