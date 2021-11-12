@@ -16,11 +16,11 @@ public class ReservaDTO {
 
     @NotNull(message = "Não pode estar null")
     @ApiModelProperty(value = "Hoteis")
-    private List<HoteisDTO> hoteisList;
+    private HoteisDTO hoteisDTO;
 
     @NotNull(message = "Não pode estar null")
     @ApiModelProperty(value = "Quartos")
-    private List<QuartosDTO> quartosList;
+    private QuartosDTO quartosDTO;
 
     @NotNull(message = "Não pode estar null")
     @ApiModelProperty(value = "Usuario")

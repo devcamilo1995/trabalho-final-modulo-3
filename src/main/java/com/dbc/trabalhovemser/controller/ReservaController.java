@@ -29,15 +29,15 @@ public class ReservaController {
     private final ReservaService reservaService;
 
 
-//    @ApiOperation(value = "Listar reservas")
-//    @ApiResponses(value ={
-//            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
-//            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
-//    })
-//    @GetMapping
-//    public List<ReservaDTO> list(){
-//        return reservaService.list();
-//    }
+    @ApiOperation(value = "Listar reservas")
+    @ApiResponses(value ={
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
+    })
+    @GetMapping
+    public List<ReservaDTO> list(){
+        return reservaService.list();
+    }
 //
 //
 //    @ApiOperation(value = "Cria uma reserva")

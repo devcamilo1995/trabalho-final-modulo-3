@@ -1,6 +1,7 @@
 package com.dbc.trabalhovemser.entity;
 
 import com.dbc.trabalhovemser.dto.TipoUsuario;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,6 +29,7 @@ public class UsuarioEntity implements Serializable {
     @Column(name = "tipo_usuario")
     private TipoUsuario tipoUsuario; // 0 - Comum, 1 - Admin.
 
+    @JsonIgnore
     @OneToMany(mappedBy = "usuarioEntity", fetch = FetchType.LAZY)
     private Set<ReservaEntity> reservas;
 }
