@@ -24,13 +24,13 @@ import java.util.stream.Collectors;
 public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final ObjectMapper objectMapper;
-    private final EmailService emailService;
+//    private final EmailService emailService;
 
     public UsuarioDTO create(UsuarioCreateDTO usuarioCreateDTO) throws MessagingException, TemplateException, IOException {
         UsuarioEntity usuarioEntity = objectMapper.convertValue(usuarioCreateDTO, UsuarioEntity.class);
         UsuarioEntity usuarioCriar = usuarioRepository.save(usuarioEntity);
         UsuarioDTO usuarioDTO = objectMapper.convertValue(usuarioCriar, UsuarioDTO.class);
-        emailService.enviarCadastroUsuario(usuarioDTO);
+//        emailService.enviarCadastroUsuario(usuarioDTO);
         return usuarioDTO;
     }
 
@@ -41,17 +41,17 @@ public class UsuarioService {
     }
 
     public UsuarioDTO update (Integer id, UsuarioCreateDTO usuarioCreateDTO) throws RegraDeNegocioException {
+        findById(id);
         UsuarioEntity usuarioEntity = objectMapper.convertValue(usuarioCreateDTO, UsuarioEntity.class);
+        usuarioEntity.setIdUsuario(id);
         UsuarioEntity usuarioAtt = usuarioRepository.save(usuarioEntity);
         UsuarioDTO dto = objectMapper.convertValue(usuarioAtt, UsuarioDTO.class);
         return dto;
-
     }
 
     public void delete (Integer id) throws RegraDeNegocioException {
         UsuarioEntity usuarioEntity = findById(id);
         usuarioRepository.delete(usuarioEntity);
-        UsuarioDTO usuarioDTO = objectMapper.convertValue(usuarioEntity,UsuarioDTO.class);
 //      emailService.enviarDeleteUsuario(pessoaDTO);
     }
 //    public UsuarioDTO getPorId(Integer idUsuario) throws RegraDeNegocioException {
