@@ -4,7 +4,6 @@ package com.dbc.trabalhovemser.entity;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -28,9 +27,6 @@ public class HoteisEntity implements Serializable {
     private Integer numero;
     @Column(name = "logradouro")
     private String logradouro;
-
-    @OneToMany(mappedBy = "hoteisEntity", fetch = FetchType.LAZY)
-    private Set<ReservaEntity> reservas;
 
 }
 
