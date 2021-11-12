@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b880e46-aa2e-464d-8b99-493106575bb7" name="Changes" comment="email/hotel service">
+    <list default="true" id="8b880e46-aa2e-464d-8b99-493106575bb7" name="Changes" comment="Banco de dados postgres2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/ReservaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/controller/ReservaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/ReservaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/dto/ReservaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/HoteisEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/HoteisEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/QuartosEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/QuartosEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/ReservaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/ReservaEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/UsuarioEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/entity/UsuarioEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/ReservaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/ReservaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +48,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vem-ser-2021/projetos/3 - spring boot/2 - spring data/pessoaapi" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -56,6 +58,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\trabalho-final-modulo-3\src\main\resources\templates" />
+      <recent name="C:\trabalho-final-modulo-3\src\main\java\com\dbc\trabalhovemser\config" />
       <recent name="C:\trabalho-final-modulo-3\src\main\resources" />
       <recent name="C:\trabalho-final-modulo-3\src\main\java\com\dbc\trabalhovemser" />
     </key>
@@ -69,6 +72,12 @@
   </component>
   <component name="RunManager">
     <configuration name="TrabalhoVemserApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <envs>
+        <env name="DATABASE_JDBC" value="jdbc:postgresql://ec2-52-205-3-3.compute-1.amazonaws.com:5432/d6l0otn0haqmjc" />
+        <env name="DATABASE_USER" value="wigxsptevvxyro" />
+        <env name="DATABASE_PASS" value="2e420b6d0c9d951f88ecedf3744c6cc28039525e0ce163f2dfea0ab9112557d2" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="com.dbc.trabalhovemser.TrabalhoVemserApplication" />
       <module name="trabalho-final-modulo-3" />
       <extension name="coverage">
@@ -121,7 +130,70 @@
       <option name="project" value="LOCAL" />
       <updated>1636223751157</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="pom att">
+      <created>1636306107437</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1636306107437</updated>
+    </task>
+    <task id="LOCAL-00005" summary="pom att2">
+      <created>1636306392056</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1636306392056</updated>
+    </task>
+    <task id="LOCAL-00006" summary="att quarto">
+      <created>1636306876264</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1636306876264</updated>
+    </task>
+    <task id="LOCAL-00007" summary="att">
+      <created>1636339787885</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1636339787885</updated>
+    </task>
+    <task id="LOCAL-00008" summary="att template">
+      <created>1636340384177</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1636340384177</updated>
+    </task>
+    <task id="LOCAL-00009" summary="templates">
+      <created>1636340839923</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1636340839923</updated>
+    </task>
+    <task id="LOCAL-00010" summary="att email e reserva templates">
+      <created>1636385099240</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1636385099241</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Banco de dados postgres">
+      <created>1636674476356</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1636674476356</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Banco de dados postgres2">
+      <created>1636674515275</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1636674515275</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,7 +217,16 @@
     </ignored-roots>
     <MESSAGE value="trabalho atualizado" />
     <MESSAGE value="email/hotel service" />
-    <option name="LAST_COMMIT_MESSAGE" value="email/hotel service" />
+    <MESSAGE value="pom att" />
+    <MESSAGE value="pom att2" />
+    <MESSAGE value="att quarto" />
+    <MESSAGE value="att" />
+    <MESSAGE value="att template" />
+    <MESSAGE value="templates" />
+    <MESSAGE value="att email e reserva templates" />
+    <MESSAGE value="Banco de dados postgres" />
+    <MESSAGE value="Banco de dados postgres2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Banco de dados postgres2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -153,6 +234,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="com.dbc.trabalhovemser.exceptions.BancoDeDadosException" package="com.dbc.trabalhovemser.exceptions" />
           <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NumberFormatException" package="java.lang" />
+          <option name="timeStamp" value="3" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

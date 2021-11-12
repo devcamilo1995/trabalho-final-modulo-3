@@ -1,7 +1,6 @@
 package com.dbc.trabalhovemser.service;
 
-import com.dbc.trabalhovemser.dto.ReservaCreateDTO;
-import com.dbc.trabalhovemser.dto.ReservaDTO;
+import com.dbc.trabalhovemser.dto.*;
 
 import com.dbc.trabalhovemser.entity.HoteisEntity;
 import com.dbc.trabalhovemser.entity.QuartosEntity;
@@ -16,29 +15,60 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class ReservaService {
-    private final ReservaRepository reservaRepository;
-    private final HoteisRepository hoteisRepository;
-    private final QuartosRepository quartosRepository;
-    private final UsuarioRepository usuarioRepository;
-    private final ObjectMapper objectMapper;
-    private final QuartosService quartosService;
-    private final HoteisService hoteisService;
-    private final UsuarioService usuarioService;
-    private final EmailService emailService;
+//    private final ReservaRepository reservaRepository;
+//    private final HoteisRepository hoteisRepository;
+//    private final QuartosRepository quartosRepository;
+//    private final UsuarioRepository usuarioRepository;
+//    private final ObjectMapper objectMapper;
+//    private final QuartosService quartosService;
+//    private final HoteisService hoteisService;
+//    private final UsuarioService usuarioService;
+}
+//    Lista
+//    public List<ReservaDTO> list() {
+////        List<ReservaDTO> reservaLista = new ArrayList<>();
+//
+//        return reservaRepository.findAll()
+//                .stream()
+//                .map(reserva -> {
+//                            ReservaDTO reservaDTO = objectMapper.convertValue(reserva, ReservaDTO.class);
+//                            reservaDTO.setUsuarioDTO(reserva.getUsuarioEntity().setNome()
+//                            .map(usuario -> {
+//                                UsuarioDTO usuarioDTO = objectMapper.convertValue(usuario, UsuarioDTO.class);
+//                                return usuarioDTO;
+//                            })
+//                            .collect(Collectors.toList()));
+//
+//                    reservaDTO.setHoteisList(x.getHoteis().stream()
+//                            .map(hoteis -> {
+//                                HoteisDTO hoteisDTO = objectMapper.convertValue(hoteis, HoteisDTO.class);
+//
+//                                return hoteisDTO;
+//                            }).collect(Collectors.toList()));
+//
+//                    reservaDTO.setQuartosList(x.getQuartos().stream()
+//                            .map(quartos -> {
+//                                QuartosDTO quartosDTO = objectMapper.convertValue(quartos, QuartosDTO.class);
+//                                return quartosDTO;
+//                            }).collect(Collectors.toList()));
+//
+//                    reservaLista.add(reservaDTO);
+////                    return reservaLista;
+//                }
+//    }
+//}
 
-    //Lista
-//    public List<ReservaDTO> list(){
-//        return reservaRepository.list().stream()
-//                .map(x -> {
-//                    ReservaDTO reservaDTO = objectMapper.convertValue(x, ReservaDTO.class);
+
+
 //                    try {
-//                        reservaDTO.setQuartosDTO(quartosService.getQuartoPorId(x.getIdQuarto()));
+//                        reservaDTO.setQuartosDTO(quartosService.(x.getIdQuarto()));
 //                        reservaDTO.setHoteisDTO(hoteisService.getPorId(x.getIdHotel()));
 //                        reservaDTO.setUsuarioDTO(usuarioService.getPorId(x.getIdUsuario()));
 //                    } catch (Exception e) {
@@ -50,11 +80,13 @@ public class ReservaService {
 //
 //    }
 
-    //Create
+//    Create
 //    public ReservaDTO create(ReservaCreateDTO reservaCreateDTO) throws Exception {
 //        ReservaEntity entity = objectMapper.convertValue(reservaCreateDTO, ReservaEntity.class);
 //
-//        HoteisEntity hotelEntity = hoteisRepository.list().stream()
+//
+//
+//        HoteisEntity hotelEntity = hoteisRepository.findById().stream()
 //                .filter(x -> x.getIdHotel().equals(entity.getIdHotel()))
 //                .findFirst()
 //                .orElseThrow(() -> new RegraDeNegocioException("Hotel não encontrado"));
@@ -66,7 +98,7 @@ public class ReservaService {
 //                .findFirst()
 //                .orElseThrow(() -> new RegraDeNegocioException("Quarto não encontrado neste hotel"));
 //
-//        UsuarioEntity usuarioEntity = usuarioRepository.list()
+//        UsuarioEntity usuarioEntity = usuarioRepository.()
 //                .stream()
 //                .filter(x -> x.getIdUsuario().equals(entity.getIdUsuario()))
 //                .findFirst()
@@ -120,4 +152,17 @@ public class ReservaService {
 //        reservaRepository.delete(id);
 //    }
 
-}
+//    public ReservaEntity findById(Integer id) throws RegraDeNegocioException {
+//        ReservaEntity entity = reservaRepository.findById(id)
+//                .orElseThrow(() -> new RegraDeNegocioException(""));
+//        return entity;
+//    }
+//
+//
+//    public ReservaDTO getById(Integer id) throws RegraDeNegocioException {
+//        ReservaEntity entity = findById(id);
+//        ReservaDTO dto = objectMapper.convertValue(entity, ReservaDTO.class);
+//        return dto;
+//    }
+//
+//}

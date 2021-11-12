@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -26,4 +27,7 @@ public class UsuarioEntity implements Serializable {
     private String email;
     @Column(name = "tipo_usuario")
     private TipoUsuario tipoUsuario; // 0 - Comum, 1 - Admin.
+
+    @OneToMany(mappedBy = "usuarioEntity", fetch = FetchType.LAZY)
+    private Set<ReservaEntity> reservas;
 }
