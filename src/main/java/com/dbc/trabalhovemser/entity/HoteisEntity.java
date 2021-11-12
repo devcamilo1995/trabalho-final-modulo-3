@@ -37,5 +37,6 @@ public class HoteisEntity implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "hoteisEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<QuartosEntity> quartosEntity;
+
 }
 

@@ -48,9 +48,14 @@ public class HoteisService {
     public HoteisDTO update(Integer id,
                             HoteisCreateDTO hoteisCreateDTO) throws Exception {
        HoteisEntity hoteisentite = objectMapper.convertValue(hoteisCreateDTO, HoteisEntity.class);
-        hoteisRepository.findById(id).orElseThrow(() -> new Exception("Hotel não Encontrado"));
-        hoteisentite.setIdHotel(id);
-        HoteisEntity hoteisEntity1 = hoteisRepository.save(hoteisentite);
+        HoteisEntity hoteisEntity = hoteisRepository.findById(id).orElseThrow(() -> new Exception("Hotel não Encontrado"));
+        hoteisEntity.setCep(hoteisentite.getCep());
+        hoteisEntity.setLogradouro(hoteisentite.getLogradouro());
+        hoteisEntity.setNomeEstado(hoteisentite.getNomeEstado());
+        hoteisEntity.setNomeHotel(hoteisentite.getNomeHotel());
+        hoteisEntity.setNomecidade(hoteisentite.getNomecidade());
+
+        HoteisEntity hoteisEntity1 = hoteisRepository.save(hoteisEntity);
 
         HoteisDTO hoteisDTO1 = objectMapper.convertValue(hoteisEntity1, HoteisDTO.class);
         return hoteisDTO1;

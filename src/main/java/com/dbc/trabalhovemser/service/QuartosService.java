@@ -25,18 +25,26 @@ public class QuartosService {
 
     public List<QuartosDTO> list(){
         return quartosRepository.findAll().stream()
-                .map(quartos -> objectMapper.convertValue(quartos, QuartosDTO.class))
+                .map(quartos ->{
+                   QuartosDTO quartosDTO = objectMapper.convertValue(quartos, QuartosDTO.class);
+                    quartosDTO.setHoteisDTO(objectMapper.convertValue(quartos.getHoteisEntity(),HoteisDTO.class));
+                    return quartosDTO;
+                } )
                 .collect(Collectors.toList());
     }
 
     public QuartosDTO update(Integer id,
-                            QuartosCreateDTO quartosCreateDTO) throws Exception {
+                            QuartosCreateDTO quartosCreateDTO) throws RegraDeNegocioException {
         QuartosEntity quartosEntity = objectMapper.convertValue(quartosCreateDTO, QuartosEntity.class);
-        quartosRepository.findById(id).orElseThrow(() -> new Exception("Quarto não Encontrado"));
-        quartosEntity.setIdQuarto(id);
-        QuartosEntity quartosEntity1 = quartosRepository.save(quartosEntity);
+        QuartosEntity quartosEntity1 = quartosRepository.findById(id).orElseThrow(() -> new RegraDeNegocioException("Quarto não Encontrado"));
+        quartosEntity1.setDescricao(quartosEntity.getDescricao());
+        quartosEntity1.setNumeroQuarto(quartosEntity.getNumeroQuarto());
+        quartosEntity1.setValorDiaria(quartosEntity.getValorDiaria());
 
-        QuartosDTO quartosDTO1 = objectMapper.convertValue(quartosEntity1, QuartosDTO.class);
+        QuartosEntity quartosEntity2 = quartosRepository.save(quartosEntity1);
+
+        QuartosDTO quartosDTO1 = objectMapper.convertValue(quartosEntity2, QuartosDTO.class);
+        quartosDTO1.setHoteisDTO(objectMapper.convertValue(quartosEntity2.getHoteisEntity(), HoteisDTO.class));
         return quartosDTO1;
     }
 
@@ -46,11 +54,14 @@ public class QuartosService {
         quartosRepository.delete(quartoDeletar);
     }
 
-    public QuartosDTO create(Integer id, QuartosCreateDTO quartosCreateDTO) throws Exception {
+    public QuartosDTO create(Integer id, QuartosCreateDTO quartosCreateDTO) throws RegraDeNegocioException {
 
         QuartosEntity entity = objectMapper.convertValue(quartosCreateDTO, QuartosEntity.class);
+        entity.setHoteisEntity(hoteisRepository.findById(id)
+                .orElseThrow(() -> new RegraDeNegocioException("Hotel não encontrado")));
         QuartosEntity quartoCriado = quartosRepository.save(entity);
         QuartosDTO dto = objectMapper.convertValue(quartoCriado, QuartosDTO.class);
+        dto.setHoteisDTO(objectMapper.convertValue(quartoCriado.getHoteisEntity(), HoteisDTO.class));
         return dto;
 
     }

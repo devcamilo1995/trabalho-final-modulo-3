@@ -73,7 +73,7 @@ public class QuartosController {
     })
     @PutMapping("/{id}")
     public QuartosDTO update(@PathVariable("id")@Valid Integer id,
-                              @RequestBody @Valid QuartosCreateDTO quartosCreateDTO) throws Exception {
+                              @RequestBody @Valid QuartosCreateDTO quartosCreateDTO) throws RegraDeNegocioException {
         log.info("Atualizando Quarto");
         QuartosDTO quartosDTO1 = quartosService.update(id,quartosCreateDTO);
         log.info("Quarto atualizado");
