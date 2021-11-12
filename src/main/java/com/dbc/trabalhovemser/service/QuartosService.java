@@ -60,7 +60,7 @@ public class QuartosService {
                 .map(quartosEntities -> {
                    QuartosDTO quartosDTO= objectMapper.convertValue(quartosEntities, QuartosDTO.class);
 
-                   quartosDTO.setHoteisDTO(objectMapper.convertValue(quartosEntities.getHoteis(),HoteisDTO.class));
+                   quartosDTO.setHoteisDTO(objectMapper.convertValue(quartosEntities.getHoteisEntity(),HoteisDTO.class));
                    return quartosDTO;
 
                 })

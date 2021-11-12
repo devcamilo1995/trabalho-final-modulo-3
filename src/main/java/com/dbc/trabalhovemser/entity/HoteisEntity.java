@@ -1,9 +1,12 @@
 package com.dbc.trabalhovemser.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -28,5 +31,11 @@ public class HoteisEntity implements Serializable {
     @Column(name = "logradouro")
     private String logradouro;
 
+    @OneToMany(mappedBy = "hoteisEntity", fetch = FetchType.LAZY)
+    private Set<ReservaEntity> reservas;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "hoteisEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<QuartosEntity> quartosEntity;
 }
 

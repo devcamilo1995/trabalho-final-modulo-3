@@ -1,9 +1,11 @@
 package com.dbc.trabalhovemser.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 
 @Getter
@@ -16,13 +18,20 @@ public class QuartosEntity implements Serializable {
     @SequenceGenerator(name = "QUARTOS_SEQ", sequenceName = "SEQ_QUARTOS", allocationSize = 1)
     @Column(name = "id_quartos")
     private Integer idQuarto;
-    @Column(name = "id_hoteis")
-    private Integer idHotel;
+
     @Column(name = "numero")
     private Integer numeroQuarto;
     @Column(name = "valor_diaria")
-    private Number valorDiaria;
+    private Double valorDiaria;
     @Column(name = "descricao")
     private String descricao;
+
+    @OneToMany(mappedBy = "quartosEntity", fetch = FetchType.LAZY)
+    private Set<ReservaEntity> reservas;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="id_hoteis",referencedColumnName = "id_hoteis")
+    private HoteisEntity hoteisEntity;
 
 }
