@@ -4,7 +4,6 @@ package com.dbc.trabalhovemser.entity;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 
 @Getter
@@ -22,10 +21,8 @@ public class QuartosEntity implements Serializable {
     @Column(name = "numero")
     private Integer numeroQuarto;
     @Column(name = "valor_diaria")
-    private Double valorDiaria;
+    private Number valorDiaria;
     @Column(name = "descricao")
     private String descricao;
 
-    @OneToMany(mappedBy = "quartosEntity", fetch = FetchType.LAZY)
-    private Set<ReservaEntity> reservas;
 }

@@ -10,11 +10,13 @@ import org.springframework.stereotype.Repository;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Repository
 public interface QuartosRepository extends JpaRepository<QuartosEntity, Integer> {
 
-
+    @Query(value = "SELECT * from quartos WHERE id_hoteis= :id ", nativeQuery = true)
+    List<QuartosEntity> findByidHotel(Integer id);
 }

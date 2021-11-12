@@ -40,7 +40,7 @@ public class HoteisService {
 
     public HoteisDTO getById(Integer id)throws RegraDeNegocioException {
         HoteisEntity hoteisentite = hoteisRepository.findById(id)
-                .orElseThrow(() -> new RegraDeNegocioException("Hotel não Encontrado"));;
+                .orElseThrow(() -> new RegraDeNegocioException("Hotel não Encontrado"));
         HoteisDTO hoteisDTO = objectMapper.convertValue(hoteisentite,HoteisDTO.class);
         return hoteisDTO;
     }
