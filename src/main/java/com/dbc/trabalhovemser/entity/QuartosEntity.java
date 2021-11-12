@@ -1,9 +1,11 @@
 package com.dbc.trabalhovemser.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 
 @Getter
@@ -25,4 +27,11 @@ public class QuartosEntity implements Serializable {
     @Column(name = "descricao")
     private String descricao;
 
+    @OneToMany(mappedBy = "quartosEntity", fetch = FetchType.LAZY)
+    private Set<ReservaEntity> reservas;
+
+    @JsonIgnore
+     @ManyToOne
+     @JoinColumn(name="id_hoteis", nullable=false)
+     private HoteisEntity hoteis;
 }
