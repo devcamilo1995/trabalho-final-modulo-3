@@ -20,17 +20,17 @@ public class ReservaEntity implements Serializable {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_hoteis", referencedColumnName = "id_hoteis")
+    @JoinColumn(name = "id_hoteis")
     private HoteisEntity hoteisEntity;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_quartos", referencedColumnName = "id_quartos")
+    @JoinColumn(name = "id_quartos")
     private QuartosEntity quartosEntity;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @JoinColumn(name = "id_usuario")
     private UsuarioEntity usuarioEntity;
 
 

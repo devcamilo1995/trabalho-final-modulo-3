@@ -15,11 +15,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class ReservaService {
     private final ReservaRepository reservaRepository;
@@ -47,15 +49,29 @@ public class ReservaService {
 
     //    Criar
     public ReservaDTO create(ReservaCreateDTO reservaCreateDTO) throws RegraDeNegocioException {
-        ReservaEntity reservaEntity = objectMapper.convertValue(reservaCreateDTO, ReservaEntity.class);
-        reservaEntity.setUsuarioEntity(usuarioRepository.getById(reservaCreateDTO.getIdUsuario()));
-        reservaEntity.setHoteisEntity(hoteisRepository.getById(reservaCreateDTO.getIdHotel()));
-        reservaEntity.setQuartosEntity(quartosRepository.getById(reservaCreateDTO.getIdQuarto()));
-        ReservaEntity reservaCriar = reservaRepository.save(reservaEntity);
-        ReservaDTO reservaDTO = objectMapper.convertValue(reservaEntity, ReservaDTO.class);
-        reservaDTO.setUsuarioDTO(objectMapper.convertValue(reservaCriar.getUsuarioEntity(), UsuarioDTO.class));
-        reservaDTO.setHoteisDTO(objectMapper.convertValue(reservaCriar.getHoteisEntity(), HoteisDTO.class));
-        reservaDTO.setQuartosDTO(objectMapper.convertValue(reservaCriar.getQuartosEntity(), QuartosDTO.class));
+        ReservaEntity reservaEntity = new ReservaEntity();
+
+        HoteisEntity hoteisEntity = hoteisRepository.getById(reservaCreateDTO.getIdHotel());
+//        hoteisEntity.setIdHotel(reservaCreateDTO.getIdHotel());
+        QuartosEntity quartosEntity = quartosRepository.getById(reservaCreateDTO.getIdQuarto());
+//        quartosEntity.setIdQuarto(reservaCreateDTO.getIdQuarto());
+        UsuarioEntity usuarioEntity = usuarioRepository.getById(reservaCreateDTO.getIdUsuario());
+//        usuarioEntity.setIdUsuario(reservaCreateDTO.getIdUsuario());
+
+        reservaEntity.setHoteisEntity(hoteisEntity);
+        reservaEntity.setQuartosEntity(quartosEntity);
+        reservaEntity.setUsuarioEntity(usuarioEntity);
+
+        ReservaEntity reservaCriada = reservaRepository.save(reservaEntity);
+
+//        reservaCriada = reservaRepository.buscarPorId(reservaCriada.getIdReserva());
+        ReservaDTO reservaDTO = objectMapper.convertValue(reservaCriada, ReservaDTO.class);
+
+
+        reservaDTO.setUsuarioDTO(objectMapper.convertValue(reservaCriada.getUsuarioEntity(), UsuarioDTO.class));
+        reservaDTO.setHoteisDTO(objectMapper.convertValue(reservaCriada.getHoteisEntity(), HoteisDTO.class));
+        reservaDTO.setQuartosDTO(objectMapper.convertValue(reservaCriada.getQuartosEntity(), QuartosDTO.class));
+
         return reservaDTO;
 
     }
