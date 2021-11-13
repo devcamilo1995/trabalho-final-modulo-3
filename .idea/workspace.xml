@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b880e46-aa2e-464d-8b99-493106575bb7" name="Changes" comment="att reserva" />
+    <list default="true" id="8b880e46-aa2e-464d-8b99-493106575bb7" name="Changes" comment="Trabalho reserva/quarto/hotel/usuario">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/HoteisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/HoteisService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/ReservaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/ReservaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/HoteisDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/HoteisDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/QuartosDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/QuartosDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/HoteisService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/HoteisService.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -192,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636738375670</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Trabalho reserva/quarto/hotel/usuario">
+      <created>1636820156981</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1636820156981</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +241,8 @@
     <MESSAGE value="Banco de dados postgres" />
     <MESSAGE value="Banco de dados postgres2" />
     <MESSAGE value="att reserva" />
-    <option name="LAST_COMMIT_MESSAGE" value="att reserva" />
+    <MESSAGE value="Trabalho reserva/quarto/hotel/usuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trabalho reserva/quarto/hotel/usuario" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
