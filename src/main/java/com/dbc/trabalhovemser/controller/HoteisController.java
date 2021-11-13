@@ -32,13 +32,13 @@ public class HoteisController{
     }
 
 
-    @ApiOperation(value = "Lista de Hoteis por Id")
-    @ApiResponses(value = {@ApiResponse(code = 400, message = "Algum dado inconsistente"),
-            @ApiResponse(code = 500, message = "Foi gerada uma exceção")})
-    @GetMapping("/{idHotel}")
-    public HoteisDTO getById(@Valid @PathVariable("idHotel") Integer id) throws RegraDeNegocioException {
-        return hoteisService.getById(id);
-    }
+//    @ApiOperation(value = "Lista de Hoteis por Id")
+//    @ApiResponses(value = {@ApiResponse(code = 400, message = "Algum dado inconsistente"),
+//            @ApiResponse(code = 500, message = "Foi gerada uma exceção")})
+//    @GetMapping("/{idHotel}")
+//    public HoteisDTO getById(@Valid @PathVariable("idHotel") Integer id) throws RegraDeNegocioException {
+//        return hoteisService.getById(id);
+//    }
 
     @ApiOperation(value = "Cria um Hotel")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Hotel criado"),
