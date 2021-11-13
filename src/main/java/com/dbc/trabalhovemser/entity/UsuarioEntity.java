@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -30,5 +31,5 @@ public class UsuarioEntity implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "usuarioEntity", fetch = FetchType.LAZY)
-    private Set<ReservaEntity> reservas;
+    private List<ReservaEntity> reservas;
 }

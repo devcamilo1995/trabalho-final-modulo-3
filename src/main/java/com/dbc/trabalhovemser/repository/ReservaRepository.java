@@ -27,4 +27,14 @@ public interface ReservaRepository extends JpaRepository<ReservaEntity, Integer>
         " JOIN fetch r.quartosEntity q ")
     List<ReservaEntity> buscarTodos();
 
+
+    @Query
+            ("select r from RESERVA r " +
+                    " JOIN Fetch r.usuarioEntity u " + " JOIN fetch r.hoteisEntity h  " +
+                    " JOIN fetch r.quartosEntity q ")
+    List<ReservaEntity> criarTodos(Integer id);
+
+
+
+
 }

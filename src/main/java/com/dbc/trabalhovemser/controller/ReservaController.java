@@ -40,19 +40,19 @@ public class ReservaController {
     }
 //
 //
-//    @ApiOperation(value = "Cria uma reserva")
-//    @ApiResponses(value ={
-//            @ApiResponse(code = 200, message = "Reserva criada com sucesso"),
-//            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
-//            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
-//    })
-//    @PostMapping
-//    public ReservaDTO create(@Valid @RequestBody ReservaCreateDTO reservaCreateDTO) throws Exception {
-//        log.info("Criando reserva...");
-//        ReservaDTO reservaDTO = reservaService.create(reservaCreateDTO);
-//        log.info("Reserva criada");
-//        return reservaDTO;
-//    }
+    @ApiOperation(value = "Cria uma reserva")
+    @ApiResponses(value ={
+            @ApiResponse(code = 200, message = "Reserva criada com sucesso"),
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
+    })
+    @PostMapping
+    public ReservaDTO create(@Valid @RequestBody ReservaCreateDTO reservaCreateDTO) throws Exception {
+        log.info("Criando reserva...");
+        ReservaDTO reservaDTO = reservaService.create(reservaCreateDTO);
+        log.info("Reserva criada");
+        return reservaDTO;
+    }
 //
 //
 //    @ApiOperation(value = "Atualiza reservas")

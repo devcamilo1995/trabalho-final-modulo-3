@@ -23,7 +23,7 @@ public class HoteisEntity implements Serializable {
     @Column(name = "nome_estados")
     private String nomeEstado;
     @Column(name = "nome_cidades")
-    private String nomecidade;
+    private String nomeCidade;
     @Column(name = "cep")
     private String cep;
     @Column(name = "numero")
@@ -32,7 +32,7 @@ public class HoteisEntity implements Serializable {
     private String logradouro;
 
     @OneToMany(mappedBy = "hoteisEntity", fetch = FetchType.LAZY)
-    private Set<ReservaEntity> reservas;
+    private List<ReservaEntity> reservas;
 
     @JsonIgnore
     @OneToMany(mappedBy = "hoteisEntity", cascade = CascadeType.ALL, orphanRemoval = true)

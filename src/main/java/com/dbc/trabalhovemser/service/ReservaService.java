@@ -46,10 +46,27 @@ public class ReservaService {
 
 
     //    Criar
-//    public ReservaDTO create(ReservaCreateDTO reservaCreateDTO) throws Exception {
+    public ReservaDTO create(ReservaCreateDTO reservaCreateDTO) throws RegraDeNegocioException {
+        ReservaEntity reservaEntity = objectMapper.convertValue(reservaCreateDTO, ReservaEntity.class);
+        reservaEntity.setUsuarioEntity(usuarioRepository.getById(reservaCreateDTO.getIdUsuario()));
+        reservaEntity.setHoteisEntity(hoteisRepository.getById(reservaCreateDTO.getIdHotel()));
+        reservaEntity.setQuartosEntity(quartosRepository.getById(reservaCreateDTO.getIdQuarto()));
+        ReservaEntity reservaCriar = reservaRepository.save(reservaEntity);
+        ReservaDTO reservaDTO = objectMapper.convertValue(reservaEntity, ReservaDTO.class);
+        reservaDTO.setUsuarioDTO(objectMapper.convertValue(reservaCriar.getUsuarioEntity(), UsuarioDTO.class));
+        reservaDTO.setHoteisDTO(objectMapper.convertValue(reservaCriar.getHoteisEntity(), HoteisDTO.class));
+        reservaDTO.setQuartosDTO(objectMapper.convertValue(reservaCriar.getQuartosEntity(), QuartosDTO.class));
+        return reservaDTO;
+
+    }
+
+//    public ReservaDTO atualizar(ReservaCreateDTO reservaCreateDTO) throws RegraDeNegocioException {
 //        ReservaEntity reservaEntity = objectMapper.convertValue(reservaCreateDTO, ReservaEntity.class);
+//        reservaEntity.setUsuarioEntity(usuarioRepository.getById(reservaCreateDTO.getIdUsuario()));
+//        reservaEntity.setHoteisEntity(hoteisRepository.getById(reservaCreateDTO.getIdHotel()));
+//        reservaEntity.setQuartosEntity(quartosRepository.getById(reservaCreateDTO.getIdQuarto()));
 //        ReservaEntity reservaCriar = reservaRepository.save(reservaEntity);
-//        ReservaDTO reservaDTO = objectMapper.convertValue(reservaCriar, ReservaDTO.class);
+//        ReservaDTO reservaDTO = objectMapper.convertValue(reservaEntity, ReservaDTO.class);
 //        reservaDTO.setUsuarioDTO(objectMapper.convertValue(reservaCriar.getUsuarioEntity(), UsuarioDTO.class));
 //        reservaDTO.setHoteisDTO(objectMapper.convertValue(reservaCriar.getHoteisEntity(), HoteisDTO.class));
 //        reservaDTO.setQuartosDTO(objectMapper.convertValue(reservaCriar.getQuartosEntity(), QuartosDTO.class));
@@ -59,32 +76,7 @@ public class ReservaService {
 
 
 
-//            HoteisEntity hotelEntity = hoteisRepository.findById(re).stream()
-//                    .filter(x -> x.getIdHotel().equals(entity.getIdHotel()))
-//                    .findFirst()
-//                    .orElseThrow(() -> new RegraDeNegocioException("Hotel não encontrado"));
 //
-//            //1
-//            QuartosEntity quartosEntity = quartosRepository.listarQuartosPorHotel(hotelEntity.getIdHotel())
-//                    .stream()
-//                    .filter(x -> x.getIdQuarto().equals(entity.getIdQuarto()))
-//                    .findFirst()
-//                    .orElseThrow(() -> new RegraDeNegocioException("Quarto não encontrado neste hotel"));
-//
-//            UsuarioEntity usuarioEntity = usuarioRepository. ()
-//                    .stream()
-//                    .filter(x -> x.getIdUsuario().equals(entity.getIdUsuario()))
-//                    .findFirst()
-//                    .orElseThrow(() -> new RegraDeNegocioException("Usuário não encontrado"));
-//
-//            ReservaEntity novaReserva = reservaRepository.create(entity);
-//            ReservaDTO dto = objectMapper.convertValue(novaReserva, ReservaDTO.class);
-//
-//            dto.setHoteisDTO(hoteisService.getPorId(novaReserva.getIdHotel()));
-//            dto.setQuartosDTO(quartosService.getQuartoPorId(novaReserva.getIdQuarto()));
-//            dto.setUsuarioDTO(usuarioService.getPorId(novaReserva.getIdUsuario()));
-////            emailService.enviarCadastroReserva(dto);
-//            return dto;
 
 //
 //    //Update

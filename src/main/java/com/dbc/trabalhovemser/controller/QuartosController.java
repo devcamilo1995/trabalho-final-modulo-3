@@ -58,7 +58,7 @@ public class QuartosController {
 
     @PostMapping("/{idHotel}")
     public QuartosDTO create(@PathVariable("idHotel") Integer id,
-                             @Valid @RequestBody QuartosCreateDTO quartosCreateDTO) throws Exception {
+                             @Valid @RequestBody QuartosCreateDTO quartosCreateDTO) throws RegraDeNegocioException {
         log.info("Criando Quarto");
         QuartosDTO quartosDTO = quartosService.create(id ,quartosCreateDTO);
         log.info("Quarto criado" );
