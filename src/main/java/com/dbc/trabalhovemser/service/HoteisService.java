@@ -68,5 +68,12 @@ public class HoteisService {
         hoteisRepository.delete(enderecoDeletar);
     }
 
+
+    //FindById
+    public HoteisEntity findById(Integer id) throws RegraDeNegocioException {
+        HoteisEntity entity = hoteisRepository.findById(id)
+                .orElseThrow(() -> new RegraDeNegocioException(""));
+        return entity;
+    }
 }
 

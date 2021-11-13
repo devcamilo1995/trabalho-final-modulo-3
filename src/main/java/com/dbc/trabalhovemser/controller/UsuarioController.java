@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import javax.mail.MessagingException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -37,16 +36,16 @@ public class UsuarioController {
     public List<UsuarioDTO> list() {return usuarioService.list();
     }
 
-//    @ApiOperation(value = "Retorna usuario Pelo ID")
-//    @ApiResponses(value ={
-//            @ApiResponse(code = 200, message = "Usuario Encontrado  sucesso"),
-//            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
-//            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
-//    })
-//    @GetMapping("/{idUsuario}")
-//    public UsuarioDTO listById(@PathVariable("idUsuario") Integer idUsuario) throws RegraDeNegocioException {
-//        return usuarioService.findById(idUsuario);
-//    }
+    @ApiOperation(value = "Retorna usuario Pelo ID")
+    @ApiResponses(value ={
+            @ApiResponse(code = 200, message = "Usuario encontrado  sucesso"),
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
+    })
+    @GetMapping("/{idUsuario}")
+    public UsuarioDTO listById(@PathVariable("idUsuario") Integer idUsuario) throws RegraDeNegocioException {
+        return usuarioService.getPorId(idUsuario);
+    }
 
     @ApiOperation(value = "Cria um novo usuario")
     @ApiResponses(value ={
@@ -55,14 +54,14 @@ public class UsuarioController {
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
     @PostMapping
-    public UsuarioDTO create(@RequestBody @Valid UsuarioCreateDTO usuarioCreateDTO) throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
+    public UsuarioDTO create(@RequestBody @Valid UsuarioCreateDTO usuarioCreateDTO) throws RegraDeNegocioException{
         log.info("Criando usuario");
         UsuarioDTO usuarioDTO = usuarioService.create(usuarioCreateDTO);
         log.info("Usuario criado com sucesso");
         return usuarioDTO;
     }
 
-    @ApiOperation(value = "Atualiza um usuario")
+    @ApiOperation(value = "Atualizar um usuario")
     @ApiResponses(value ={
             @ApiResponse(code = 200, message = "Usuario atualizado com sucesso"),
             @ApiResponse(code = 400, message = "Algum dado inconsistente"),
@@ -76,7 +75,7 @@ public class UsuarioController {
         return usuarioDTO;
     }
 
-    @ApiOperation(value = "Deleta um usuario")
+    @ApiOperation(value = "Deletar um usuario")
     @ApiResponses(value ={
             @ApiResponse(code = 200, message = "Usuario deletado com sucesso"),
             @ApiResponse(code = 400, message = "Algum dado inconsistente"),
@@ -86,6 +85,6 @@ public class UsuarioController {
     public void delete(@PathVariable("idUsuario") @NotNull Integer id) throws RegraDeNegocioException {
         log.info("Deletando usuario");
         usuarioService.delete(id);
-        log.info("Usuario deletado");
+        log.info("Usuario deletado com sucesso");
     }
 }

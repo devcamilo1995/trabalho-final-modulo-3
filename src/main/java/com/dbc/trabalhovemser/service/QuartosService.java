@@ -2,8 +2,8 @@ package com.dbc.trabalhovemser.service;
 
 
 import com.dbc.trabalhovemser.dto.*;
-import com.dbc.trabalhovemser.entity.HoteisEntity;
 import com.dbc.trabalhovemser.entity.QuartosEntity;
+import com.dbc.trabalhovemser.entity.ReservaEntity;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.repository.HoteisRepository;
 import com.dbc.trabalhovemser.repository.QuartosRepository;
@@ -23,18 +23,29 @@ public class QuartosService {
     private final ObjectMapper objectMapper;
 
 
-    public List<QuartosDTO> list(){
+    public List<QuartosDTO> list() {
         return quartosRepository.findAll().stream()
-                .map(quartos ->{
-                   QuartosDTO quartosDTO = objectMapper.convertValue(quartos, QuartosDTO.class);
-                    quartosDTO.setHoteisDTO(objectMapper.convertValue(quartos.getHoteisEntity(),HoteisDTO.class));
+                .map(quartos -> {
+                    QuartosDTO quartosDTO = objectMapper.convertValue(quartos, QuartosDTO.class);
+                    quartosDTO.setHoteisDTO(objectMapper.convertValue(quartos.getHoteisEntity(), HoteisDTO.class));
                     return quartosDTO;
-                } )
+                })
                 .collect(Collectors.toList());
     }
 
-    public QuartosDTO update(Integer id,
-                            QuartosCreateDTO quartosCreateDTO) throws RegraDeNegocioException {
+    public List<QuartosDTO> getByIdHotel(Integer id) throws RegraDeNegocioException {
+        return quartosRepository.findByidHotel(id).stream()
+                .map(quartosEntities -> {
+                    QuartosDTO quartosDTO = objectMapper.convertValue(quartosEntities, QuartosDTO.class);
+
+                    quartosDTO.setHoteisDTO(objectMapper.convertValue(quartosEntities.getHoteisEntity(), HoteisDTO.class));
+                    return quartosDTO;
+
+                })
+                .collect(Collectors.toList());
+    }
+
+    public QuartosDTO update(Integer id, QuartosCreateDTO quartosCreateDTO) throws RegraDeNegocioException {
         QuartosEntity quartosEntity = objectMapper.convertValue(quartosCreateDTO, QuartosEntity.class);
         QuartosEntity quartosEntity1 = quartosRepository.findById(id).orElseThrow(() -> new RegraDeNegocioException("Quarto não Encontrado"));
         quartosEntity1.setDescricao(quartosEntity.getDescricao());
@@ -66,17 +77,21 @@ public class QuartosService {
 
     }
 
-    public List<QuartosDTO> getByIdHotel(Integer id)throws RegraDeNegocioException {
-        return quartosRepository.findByidHotel(id).stream()
-                .map(quartosEntities -> {
-                   QuartosDTO quartosDTO= objectMapper.convertValue(quartosEntities, QuartosDTO.class);
-
-                   quartosDTO.setHoteisDTO(objectMapper.convertValue(quartosEntities.getHoteisEntity(),HoteisDTO.class));
-                   return quartosDTO;
-
-                })
-                .collect(Collectors.toList());
+    //FindById
+    public QuartosEntity findById(Integer id) throws RegraDeNegocioException {
+        QuartosEntity entity = quartosRepository.findById(id)
+                .orElseThrow(() -> new RegraDeNegocioException(""));
+        return entity;
     }
+
+    //GetById
+    public QuartosDTO getById(Integer id) throws RegraDeNegocioException {
+        QuartosEntity entity = findById(id);
+        QuartosDTO quartosDTO = objectMapper.convertValue(entity, QuartosDTO.class);
+        return quartosDTO;
+    }
+
+
 
 
 }
