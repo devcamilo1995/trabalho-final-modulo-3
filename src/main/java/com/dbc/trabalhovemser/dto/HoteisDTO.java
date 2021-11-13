@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -43,4 +44,5 @@ public class HoteisDTO {
     @NotBlank(message = "Não pode estar em branco")
     @ApiModelProperty("Nome logradouro")
     private String logradouro;
+
 }

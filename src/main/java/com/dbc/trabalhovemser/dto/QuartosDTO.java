@@ -19,10 +19,6 @@ public class QuartosDTO {
     private Integer idQuarto;
 
     @NotNull(message = "Não pode ser null")
-    @ApiModelProperty(value= "Hotel")
-    private HoteisDTO hoteisDTO;
-
-    @NotNull(message = "Não pode ser null")
     @ApiModelProperty(value= "Numero Quarto")
     private Integer numeroQuarto;
 

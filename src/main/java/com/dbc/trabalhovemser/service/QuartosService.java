@@ -26,7 +26,7 @@ public class QuartosService {
     public List<QuartosDTO> list() {
         return quartosRepository.findAll().stream()
                 .map(quartos -> {
-                    QuartosDTO quartosDTO = objectMapper.convertValue(quartos, QuartosDTO.class);
+                    QuartosComHotelDTO quartosDTO = objectMapper.convertValue(quartos, QuartosComHotelDTO.class);
                     quartosDTO.setHoteisDTO(objectMapper.convertValue(quartos.getHoteisEntity(), HoteisDTO.class));
                     return quartosDTO;
                 })
@@ -36,7 +36,7 @@ public class QuartosService {
     public List<QuartosDTO> getByIdHotel(Integer id) throws RegraDeNegocioException {
         return quartosRepository.findByidHotel(id).stream()
                 .map(quartosEntities -> {
-                    QuartosDTO quartosDTO = objectMapper.convertValue(quartosEntities, QuartosDTO.class);
+                    QuartosComHotelDTO quartosDTO = objectMapper.convertValue(quartosEntities, QuartosComHotelDTO.class);
 
                     quartosDTO.setHoteisDTO(objectMapper.convertValue(quartosEntities.getHoteisEntity(), HoteisDTO.class));
                     return quartosDTO;
@@ -54,7 +54,7 @@ public class QuartosService {
 
         QuartosEntity quartosEntity2 = quartosRepository.save(quartosEntity1);
 
-        QuartosDTO quartosDTO1 = objectMapper.convertValue(quartosEntity2, QuartosDTO.class);
+        QuartosComHotelDTO quartosDTO1 = objectMapper.convertValue(quartosEntity2, QuartosComHotelDTO.class);
         quartosDTO1.setHoteisDTO(objectMapper.convertValue(quartosEntity2.getHoteisEntity(), HoteisDTO.class));
         return quartosDTO1;
     }
@@ -71,7 +71,7 @@ public class QuartosService {
         entity.setHoteisEntity(hoteisRepository.findById(id)
                 .orElseThrow(() -> new RegraDeNegocioException("Hotel não encontrado")));
         QuartosEntity quartoCriado = quartosRepository.save(entity);
-        QuartosDTO dto = objectMapper.convertValue(quartoCriado, QuartosDTO.class);
+        QuartosComHotelDTO dto = objectMapper.convertValue(quartoCriado, QuartosComHotelDTO.class);
         dto.setHoteisDTO(objectMapper.convertValue(quartoCriado.getHoteisEntity(), HoteisDTO.class));
         return dto;
 

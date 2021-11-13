@@ -26,7 +26,7 @@ public class QuartosEntity implements Serializable {
     @Column(name = "descricao")
     private String descricao;
 
-    @OneToMany(mappedBy = "quartosEntity", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "quartosEntity",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<ReservaEntity> reservas;
 
     @JsonIgnore

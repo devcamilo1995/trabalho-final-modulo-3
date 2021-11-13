@@ -1,6 +1,7 @@
 package com.dbc.trabalhovemser.service;
 
 
+import com.dbc.trabalhovemser.dto.HoteisComQuartosDTO;
 import com.dbc.trabalhovemser.dto.HoteisCreateDTO;
 import com.dbc.trabalhovemser.dto.HoteisDTO;
 import com.dbc.trabalhovemser.dto.QuartosDTO;
@@ -33,9 +34,15 @@ public class HoteisService {
     }
 
         public List<HoteisDTO> list(){
+
         return hoteisRepository.findAll().stream()
-        .map(hoteis -> objectMapper.convertValue(hoteis, HoteisDTO.class))
-                .collect(Collectors.toList());
+        .map(hoteis ->{
+            HoteisComQuartosDTO hoteisDTO = objectMapper.convertValue(hoteis, HoteisComQuartosDTO.class);
+            hoteisDTO.setQuartosDTOList(hoteis.getQuartosEntity().stream()
+                    .map(quartosEntity -> objectMapper.convertValue(quartosEntity, QuartosDTO.class)).toList()
+            );
+            return hoteisDTO;
+        }).collect(Collectors.toList());
    }
 
     public HoteisDTO getById(Integer id)throws RegraDeNegocioException {
