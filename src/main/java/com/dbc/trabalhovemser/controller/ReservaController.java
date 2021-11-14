@@ -3,6 +3,7 @@ package com.dbc.trabalhovemser.controller;
 import com.dbc.trabalhovemser.dto.ReservaCreateDTO;
 import com.dbc.trabalhovemser.dto.ReservaDTO;
 
+import com.dbc.trabalhovemser.dto.UsuarioComReservaDTO;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.service.ReservaService;
 import freemarker.template.TemplateException;
@@ -92,5 +93,17 @@ public class ReservaController {
     public ReservaDTO listById(@Valid @PathVariable("idReserva") Integer id) throws RegraDeNegocioException {
        return reservaService.getById(id);
     }
+
+    @ApiOperation(value = "Listar reservas por ID do usuário")
+    @ApiResponses(value ={
+            @ApiResponse(code = 200, message = "Reservas listadas com sucesso"),
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
+    })
+    @GetMapping("/listar-por-usuario/{idUsuario}")
+    public List<UsuarioComReservaDTO> listarReservasPorUsuario(@Valid @PathVariable Integer idUsuario) throws RegraDeNegocioException{
+        return reservaService.listReservasPorUsuario(idUsuario);
+    }
+
 
 }

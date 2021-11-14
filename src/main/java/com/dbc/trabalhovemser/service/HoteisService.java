@@ -21,7 +21,7 @@ public class HoteisService {
     private final ObjectMapper objectMapper;
 
 
-        public HoteisDTO create (HoteisCreateDTO hoteisCreateDTO) throws Exception {
+    public HoteisDTO create (HoteisCreateDTO hoteisCreateDTO) throws Exception {
 
         HoteisEntity entity = objectMapper.convertValue(hoteisCreateDTO, HoteisEntity.class);
         HoteisEntity hotelCriado = hoteisRepository.save(entity);
@@ -30,7 +30,7 @@ public class HoteisService {
 
     }
 
-        public List<HoteisDTO> list(){
+    public List<HoteisDTO> list(){
 
         return hoteisRepository.findAll().stream()
         .map(hoteis ->{
