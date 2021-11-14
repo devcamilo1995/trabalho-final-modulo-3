@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -105,6 +106,28 @@ public class ReservaService {
         reservaDTO.setHoteisDTO(objectMapper.convertValue(entity.getHoteisEntity(), HoteisDTO.class));
         reservaDTO.setQuartosDTO(objectMapper.convertValue(entity.getQuartosEntity(), QuartosDTO.class));
         return reservaDTO;
+    }
+
+    public List<UsuarioComReservaDTO> listReservasPorUsuario(Integer id) throws RegraDeNegocioException{
+        return usuarioRepository.findById(id).stream()
+                .map(usuario -> {
+                    UsuarioComReservaDTO usuarioComReservaDTO= objectMapper.convertValue(usuario, UsuarioComReservaDTO.class);
+                    usuarioComReservaDTO.setReservas(
+                            usuario.getReservas()
+                                    .stream()
+                                    .map(reserva -> {
+                                        ReservaSemUsuarioDTO reservaDto = objectMapper.convertValue(reserva, ReservaSemUsuarioDTO.class);
+                                        reservaDto.setHoteisDTO(objectMapper.convertValue(reserva.getHoteisEntity(), HoteisDTO.class));
+                                        reservaDto.setQuartosDTO(objectMapper.convertValue(reserva.getQuartosEntity(), QuartosDTO.class));
+
+                                        return reservaDto;
+                                    })
+                                    .collect(Collectors.toList())
+                    );
+
+                    return usuarioComReservaDTO;
+                })
+                .collect(Collectors.toList());
     }
 
 }
