@@ -1,7 +1,10 @@
 package com.dbc.trabalhovemser.service;
 
 import com.dbc.trabalhovemser.dto.*;
+import com.dbc.trabalhovemser.entity.HoteisEntity;
+import com.dbc.trabalhovemser.entity.QuartosEntity;
 import com.dbc.trabalhovemser.entity.ReservaEntity;
+import com.dbc.trabalhovemser.entity.UsuarioEntity;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.repository.HoteisRepository;
 import com.dbc.trabalhovemser.repository.QuartosRepository;
@@ -39,9 +42,22 @@ public class ReservaService {
     //Criar
     public ReservaDTO create(ReservaCreateDTO reservaCreateDTO) throws RegraDeNegocioException {
         ReservaEntity reservaEntity = objectMapper.convertValue(reservaCreateDTO, ReservaEntity.class);
-        reservaEntity.setUsuarioEntity(usuarioRepository.getById(reservaCreateDTO.getIdUsuario()));
-        reservaEntity.setHoteisEntity(hoteisRepository.getById(reservaCreateDTO.getIdHotel()));
-        reservaEntity.setQuartosEntity(quartosRepository.getById(reservaCreateDTO.getIdQuarto()));
+        QuartosEntity quartosEntity = quartosRepository.findById(reservaCreateDTO.getIdQuarto())
+                .orElseThrow(() -> new RegraDeNegocioException("Quarto não encontrado"));
+
+        HoteisEntity hoteisEntity = hoteisRepository.findById(reservaCreateDTO.getIdHotel())
+                .orElseThrow(() -> new RegraDeNegocioException("Hotel não encontrado"));
+
+        UsuarioEntity usuarioEntity = usuarioRepository.findById(reservaCreateDTO.getIdUsuario())
+                .orElseThrow(() -> new RegraDeNegocioException("Usuario não encontrado"));
+
+        if(quartosEntity.getHoteisEntity().getIdHotel() != hoteisEntity.getIdHotel()){
+            throw  new RegraDeNegocioException("o quarto não pertence ao mesmo hotel");
+        }
+
+        reservaEntity.setUsuarioEntity(usuarioEntity);
+        reservaEntity.setHoteisEntity(hoteisEntity);
+        reservaEntity.setQuartosEntity(quartosEntity);
         ReservaEntity reservaCriar = reservaRepository.save(reservaEntity);
         ReservaDTO reservaDTO = objectMapper.convertValue(reservaEntity, ReservaDTO.class);
         reservaDTO.setUsuarioDTO(objectMapper.convertValue(reservaCriar.getUsuarioEntity(), UsuarioDTO.class));
