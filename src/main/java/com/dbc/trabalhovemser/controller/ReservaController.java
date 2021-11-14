@@ -101,8 +101,8 @@ public class ReservaController {
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
     @GetMapping("/listar-por-usuario/{idUsuario}")
-    public List<UsuarioComReservaDTO> listarReservasPorUsuario(@Valid @PathVariable Integer idUsuario) throws RegraDeNegocioException{
-        return reservaService.listReservasPorUsuario(idUsuario);
+    public UsuarioComReservaDTO listarReservasPorUsuario(@Valid @PathVariable Integer idUsuario) throws RegraDeNegocioException{
+        return reservaService.reservasPorUsuario(idUsuario);
     }
 
 

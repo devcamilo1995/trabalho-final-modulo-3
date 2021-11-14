@@ -108,26 +108,24 @@ public class ReservaService {
         return reservaDTO;
     }
 
-    public List<UsuarioComReservaDTO> listReservasPorUsuario(Integer id) throws RegraDeNegocioException{
-        return usuarioRepository.findById(id).stream()
-                .map(usuario -> {
-                    UsuarioComReservaDTO usuarioComReservaDTO= objectMapper.convertValue(usuario, UsuarioComReservaDTO.class);
-                    usuarioComReservaDTO.setReservas(
-                            usuario.getReservas()
-                                    .stream()
-                                    .map(reserva -> {
-                                        ReservaSemUsuarioDTO reservaDto = objectMapper.convertValue(reserva, ReservaSemUsuarioDTO.class);
-                                        reservaDto.setHoteisDTO(objectMapper.convertValue(reserva.getHoteisEntity(), HoteisDTO.class));
-                                        reservaDto.setQuartosDTO(objectMapper.convertValue(reserva.getQuartosEntity(), QuartosDTO.class));
+    public UsuarioComReservaDTO reservasPorUsuario(Integer id) throws RegraDeNegocioException{
+        UsuarioEntity usuario = usuarioRepository.getById(id);
+        UsuarioComReservaDTO usuarioComReservaDTO= objectMapper.convertValue(usuario, UsuarioComReservaDTO.class);
 
-                                        return reservaDto;
-                                    })
-                                    .collect(Collectors.toList())
-                    );
+        usuarioComReservaDTO.setReservas(
+                usuario.getReservas()
+                        .stream()
+                        .map(reserva -> {
+                            ReservaSemUsuarioDTO reservaDto = objectMapper.convertValue(reserva, ReservaSemUsuarioDTO.class);
+                            reservaDto.setHoteisDTO(objectMapper.convertValue(reserva.getHoteisEntity(), HoteisDTO.class));
+                            reservaDto.setQuartosDTO(objectMapper.convertValue(reserva.getQuartosEntity(), QuartosDTO.class));
 
-                    return usuarioComReservaDTO;
-                })
-                .collect(Collectors.toList());
+                            return reservaDto;
+                        })
+                        .collect(Collectors.toList())
+        );
+
+        return usuarioComReservaDTO;
     }
 
 }
