@@ -39,13 +39,13 @@ public class HoteisService {
         }).collect(Collectors.toList());
    }
 
-//    public HoteisDTO getById(Integer id)throws RegraDeNegocioException {
-//         return hoteisRepository.findById(id).map(hoteis ->{
-//            HoteisComQuartosDTO hoteisDTO = objectMapper.convertValue(hoteis, HoteisComQuartosDTO.class);
-//            hoteisDTO.setQuartosDTOList(objectMapper.convertValue(hoteis.getQuartosEntity(), HoteisComQuartosDTO.class));
-//            return hoteisDTO;
-//    }).orElseThrow(() -> new RegraDeNegocioException("hotel não encontrado"));
-//        }
+    public HoteisDTO getById(Integer id)throws RegraDeNegocioException {
+         return hoteisRepository.findById(id).map(hoteis ->{
+            HoteisComQuartosDTO hoteisComQuartosDTO = objectMapper.convertValue(hoteis, HoteisComQuartosDTO.class);
+            hoteisComQuartosDTO.setQuartosDTOList(hoteis.getQuartosEntity().stream().map(quartosEntity -> objectMapper.convertValue(quartosEntity,QuartosDTO.class)).collect(Collectors.toList()));
+            return hoteisComQuartosDTO;
+    }).orElseThrow(() -> new RegraDeNegocioException("hotel não encontrado"));
+        }
 
     public HoteisDTO update(Integer id,
                             HoteisCreateDTO hoteisCreateDTO) throws Exception {
