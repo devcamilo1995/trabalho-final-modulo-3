@@ -1,8 +1,5 @@
 package com.dbc.trabalhovemser.controller;
-
-
 import com.dbc.trabalhovemser.dto.QuartosCreateDTO;
-import com.dbc.trabalhovemser.dto.QuartosCreateDTODOIS;
 import com.dbc.trabalhovemser.dto.QuartosDTO;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.service.QuartosService;
@@ -11,7 +8,6 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +33,6 @@ public class QuartosController {
         return quartosService.list();
     }
 
-
     @ApiOperation(value = "Lista de Quartos por ID Hotel")
     @ApiResponses(value ={
             @ApiResponse(code = 200, message = "Lista gerada com sucesso"),
@@ -45,7 +40,7 @@ public class QuartosController {
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
     @GetMapping("/idhotel")
-    public List<QuartosDTO> list(@Valid @RequestParam("idHotel") Integer idHotel) throws RegraDeNegocioException {
+    public List<QuartosDTO> listById(@Valid @RequestParam("idHotel") Integer idHotel) throws RegraDeNegocioException {
         return quartosService.getByIdHotel(idHotel);
     }
 
@@ -57,8 +52,7 @@ public class QuartosController {
     })
 
     @PostMapping("/{idHotel}")
-    public QuartosDTO create(@PathVariable("idHotel") Integer id,
-                             @Valid @RequestBody QuartosCreateDTO quartosCreateDTO) throws RegraDeNegocioException {
+    public QuartosDTO create(@PathVariable("idHotel") Integer id, @Valid @RequestBody QuartosCreateDTO quartosCreateDTO) throws RegraDeNegocioException {
         log.info("Criando Quarto");
         QuartosDTO quartosDTO = quartosService.create(id ,quartosCreateDTO);
         log.info("Quarto criado" );
@@ -72,8 +66,7 @@ public class QuartosController {
             @ApiResponse(code = 500, message = "Foi gerada uma exceção")
     })
     @PutMapping("/{id}")
-    public QuartosDTO update(@PathVariable("id")@Valid Integer id,
-                              @RequestBody @Valid QuartosCreateDTO quartosCreateDTO) throws RegraDeNegocioException {
+    public QuartosDTO update(@PathVariable("id")@Valid Integer id, @RequestBody @Valid QuartosCreateDTO quartosCreateDTO) throws RegraDeNegocioException {
         log.info("Atualizando Quarto");
         QuartosDTO quartosDTO1 = quartosService.update(id,quartosCreateDTO);
         log.info("Quarto atualizado");

@@ -1,10 +1,8 @@
 package com.dbc.trabalhovemser.controller;
-
 import com.dbc.trabalhovemser.dto.UsuarioCreateDTO;
 import com.dbc.trabalhovemser.dto.UsuarioDTO;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
 import com.dbc.trabalhovemser.service.UsuarioService;
-import freemarker.template.TemplateException;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -12,10 +10,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import javax.mail.MessagingException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.io.IOException;
 import java.util.List;
 
 @RestController

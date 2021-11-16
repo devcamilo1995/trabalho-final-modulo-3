@@ -1,5 +1,4 @@
 package com.dbc.trabalhovemser.controller;
-
 import com.dbc.trabalhovemser.dto.HoteisCreateDTO;
 import com.dbc.trabalhovemser.dto.HoteisDTO;
 import com.dbc.trabalhovemser.exceptions.RegraDeNegocioException;
@@ -31,7 +30,6 @@ public class HoteisController{
         return hoteisService.list();
     }
 
-
     @ApiOperation(value = "Lista de Hoteis por Id")
     @ApiResponses(value = {@ApiResponse(code = 400, message = "Algum dado inconsistente"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção")})
@@ -60,8 +58,7 @@ public class HoteisController{
             @ApiResponse(code = 500, message = "Foi gerada uma exceção")
     })
     @PutMapping("/{idHotel}")
-    public HoteisDTO update(@Valid @PathVariable("idHotel") Integer id,
-                             @Valid @RequestBody HoteisCreateDTO hoteisCreateDTO) throws Exception {
+    public HoteisDTO update(@Valid @PathVariable("idHotel") Integer id, @Valid @RequestBody HoteisCreateDTO hoteisCreateDTO) throws Exception {
         log.info("Atualizando hotel");
         HoteisDTO hotel = hoteisService.update(id, hoteisCreateDTO);
         log.info("Hotel atualizado com sucesso");

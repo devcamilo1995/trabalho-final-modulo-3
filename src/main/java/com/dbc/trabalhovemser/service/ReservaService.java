@@ -108,6 +108,7 @@ public class ReservaService {
         return reservaDTO;
     }
 
+    //UsuarioComReserva
     public UsuarioComReservaDTO reservasPorUsuario(Integer id) throws RegraDeNegocioException{
         UsuarioEntity usuario = usuarioRepository.getById(id);
         UsuarioComReservaDTO usuarioComReservaDTO= objectMapper.convertValue(usuario, UsuarioComReservaDTO.class);

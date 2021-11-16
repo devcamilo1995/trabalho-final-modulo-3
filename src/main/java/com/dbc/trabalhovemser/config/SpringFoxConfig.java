@@ -28,7 +28,7 @@ public class SpringFoxConfig {
                         .version("1.0.0")
                         .license("Apache Licence Version 2.0")
                         .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
-                        .contact(new Contact("Guilherme", "https://www.dbccompany.com.br/", "nei.guilherme@dbccompany.com.br"))
+                        .contact(new Contact("Matheus", "https://www.dbccompany.com.br/", "matheus.camilo@dbccompany.com.br"))
                         .build()
                 );
     }
