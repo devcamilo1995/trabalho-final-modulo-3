@@ -56,6 +56,7 @@ public class HoteisService {
         hoteisEntity.setNomeEstado(hoteisentite.getNomeEstado());
         hoteisEntity.setNomeHotel(hoteisentite.getNomeHotel());
         hoteisEntity.setNomeCidade(hoteisentite.getNomeCidade());
+        hoteisEntity.setNumero(hoteisentite.getNumero());
 
         HoteisEntity hoteisEntity1 = hoteisRepository.save(hoteisEntity);
 
