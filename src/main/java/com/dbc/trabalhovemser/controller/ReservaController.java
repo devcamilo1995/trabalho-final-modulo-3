@@ -1,4 +1,5 @@
 package com.dbc.trabalhovemser.controller;
+import com.dbc.trabalhovemser.dto.HotelComReservaDTO;
 import com.dbc.trabalhovemser.dto.ReservaCreateDTO;
 import com.dbc.trabalhovemser.dto.ReservaDTO;
 import com.dbc.trabalhovemser.dto.UsuarioComReservaDTO;
@@ -98,6 +99,18 @@ public class ReservaController {
     public UsuarioComReservaDTO listarReservasPorUsuario(@Valid @PathVariable Integer idUsuario) throws RegraDeNegocioException{
         return reservaService.reservasPorUsuario(idUsuario);
     }
+
+    @ApiOperation(value = "Listar reservas por ID de hotel")
+    @ApiResponses(value ={
+            @ApiResponse(code = 200, message = "Reservas listadas com sucesso"),
+            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
+    })
+    @GetMapping("/listar-por-hotel/{idHotel}")
+    public List<HotelComReservaDTO> listarReservasPorHotel(@Valid @PathVariable Integer idHotel) throws RegraDeNegocioException{
+        return reservaService.listReservasPorHotel(idHotel);
+    }
+
 
 
 }
