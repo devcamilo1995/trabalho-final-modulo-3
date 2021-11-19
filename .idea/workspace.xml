@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b880e46-aa2e-464d-8b99-493106575bb7" name="Changes" comment="Trabalho reserva/quarto/hotel/usuario">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/ReservaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbc/trabalhovemser/service/ReservaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/UsuarioDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/dto/UsuarioDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/entity/HoteisEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/entity/HoteisEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dbc/trabalhovemser/service/UsuarioService.class" afterDir="false" />
-    </list>
+    <list default="true" id="8b880e46-aa2e-464d-8b99-493106575bb7" name="Changes" comment="Trabalho reserva/quarto/hotel/usuario2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -230,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636820156981</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Trabalho reserva/quarto/hotel/usuario2">
+      <created>1637353036004</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1637353036004</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +265,8 @@
     <MESSAGE value="Banco de dados postgres2" />
     <MESSAGE value="att reserva" />
     <MESSAGE value="Trabalho reserva/quarto/hotel/usuario" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trabalho reserva/quarto/hotel/usuario" />
+    <MESSAGE value="Trabalho reserva/quarto/hotel/usuario2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trabalho reserva/quarto/hotel/usuario2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
