@@ -3,15 +3,21 @@ package com.dbc.trabalhovemser.entity;
 import com.dbc.trabalhovemser.dto.TipoUsuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-@Data
-@Entity(name="USUARIO")
-public class UsuarioEntity implements Serializable {
+@Getter
+@Setter
+@Entity(name = "USUARIO")
+public class UsuarioEntity implements Serializable, UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_SEQ")
@@ -26,10 +32,62 @@ public class UsuarioEntity implements Serializable {
     private LocalDate dataNascimento;
     @Column(name = "email")
     private String email;
-    @Column(name = "tipo_usuario")
-    private TipoUsuario tipoUsuario; // 0 - Comum, 1 - Admin.
+    @Column(name = "login")
+    private String login;
+    @Column(name = "senha")
+    private String senha;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "USUARIO_GRUPO",
+            joinColumns = @JoinColumn(name = "id_usuario"),
+            inverseJoinColumns = @JoinColumn(name = "id_grupo")
+    )
+    private List<GrupoEntity> grupos;
 
     @JsonIgnore
     @OneToMany(mappedBy = "usuarioEntity", fetch = FetchType.LAZY)
     private List<ReservaEntity> reservas;
+
+    @JsonIgnore
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        for (GrupoEntity grupoEntity : grupos) {
+            grantedAuthorities.addAll(grupoEntity.getRegras());
+        }
+        return grantedAuthorities;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.senha;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 }
