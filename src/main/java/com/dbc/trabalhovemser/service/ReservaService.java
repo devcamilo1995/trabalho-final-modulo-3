@@ -64,12 +64,13 @@ public class ReservaService {
         ReservaEntity reservaCriar = reservaRepository.save(reservaEntity);
         ReservaDTO reservaDTO = objectMapper.convertValue(reservaEntity, ReservaDTO.class);
         reservaDTO.setUsuarioDTO(objectMapper.convertValue(reservaCriar.getUsuarioEntity(), UsuarioDTO.class));
+        reservaDTO.getUsuarioDTO().setGrupos(reservaCriar.getUsuarioEntity().getGrupos().stream().map(grupoEntity ->
+                objectMapper.convertValue(grupoEntity, GrupoDTO.class)).collect(Collectors.toList()));
         reservaDTO.setHoteisDTO(objectMapper.convertValue(reservaCriar.getHoteisEntity(), HoteisDTO.class));
         reservaDTO.setQuartosDTO(objectMapper.convertValue(reservaCriar.getQuartosEntity(), QuartosDTO.class));
         return reservaDTO;
 
     }
-
     //Deletar
     public void delete(Integer id) throws RegraDeNegocioException {
         ReservaEntity reservaEntity = findById(id);
