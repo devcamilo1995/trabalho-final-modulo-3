@@ -17,7 +17,7 @@ public class UsuarioDTO {
     private LocalDate dataNascimento;
     private String email;
     private String login;
-    private List<Integer> grupos;
+    private List<GrupoDTO> grupos;
 
 }
 

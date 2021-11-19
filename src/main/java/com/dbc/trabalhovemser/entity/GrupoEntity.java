@@ -1,5 +1,6 @@
 package com.dbc.trabalhovemser.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,10 +22,11 @@ public class GrupoEntity implements Serializable {
     private String nome;
 
     private String descricao;
-
+    @JsonIgnore
     @ManyToMany(mappedBy = "grupos")
     private List<UsuarioEntity> usuarios;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "GRUPO_REGRA",

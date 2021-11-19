@@ -31,6 +31,7 @@ public class HoteisEntity implements Serializable {
     @Column(name = "logradouro")
     private String logradouro;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "hoteisEntity", fetch = FetchType.LAZY)
     private List<ReservaEntity> reservas;
 

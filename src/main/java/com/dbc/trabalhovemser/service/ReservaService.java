@@ -33,6 +33,8 @@ public class ReservaService {
         return reservaRepository.findAll().stream().map(reserva -> {
                     ReservaDTO reservaDTO = objectMapper.convertValue(reserva, ReservaDTO.class);
                     reservaDTO.setUsuarioDTO(objectMapper.convertValue(reserva.getUsuarioEntity(), UsuarioDTO.class));
+                    reservaDTO.getUsuarioDTO().setGrupos(reserva.getUsuarioEntity().getGrupos().stream().map(grupoEntity ->
+                            objectMapper.convertValue(grupoEntity, GrupoDTO.class)).collect(Collectors.toList()));
                     reservaDTO.setHoteisDTO(objectMapper.convertValue(reserva.getHoteisEntity(), HoteisDTO.class));
                     reservaDTO.setQuartosDTO(objectMapper.convertValue(reserva.getQuartosEntity(), QuartosDTO.class));
                     return reservaDTO;
@@ -103,6 +105,8 @@ public class ReservaService {
         ReservaEntity entity = findById(id);
         ReservaDTO reservaDTO = objectMapper.convertValue(entity, ReservaDTO.class);
         reservaDTO.setUsuarioDTO(objectMapper.convertValue(entity.getUsuarioEntity(), UsuarioDTO.class));
+        reservaDTO.getUsuarioDTO().setGrupos(entity.getUsuarioEntity().getGrupos().stream().map(grupoEntity ->
+                objectMapper.convertValue(grupoEntity, GrupoDTO.class)).collect(Collectors.toList()));
         reservaDTO.setHoteisDTO(objectMapper.convertValue(entity.getHoteisEntity(), HoteisDTO.class));
         reservaDTO.setQuartosDTO(objectMapper.convertValue(entity.getQuartosEntity(), QuartosDTO.class));
         return reservaDTO;
@@ -112,12 +116,14 @@ public class ReservaService {
     public UsuarioComReservaDTO reservasPorUsuario(Integer id) throws RegraDeNegocioException{
         UsuarioEntity usuario = usuarioRepository.getById(id);
         UsuarioComReservaDTO usuarioComReservaDTO= objectMapper.convertValue(usuario, UsuarioComReservaDTO.class);
-
+        usuarioComReservaDTO.setGrupos(usuario.getGrupos().stream().map(grupoEntity ->
+                objectMapper.convertValue(grupoEntity, GrupoDTO.class)).collect(Collectors.toList()));
         usuarioComReservaDTO.setReservas(
                 usuario.getReservas()
                         .stream()
                         .map(reserva -> {
                             ReservaSemUsuarioDTO reservaDto = objectMapper.convertValue(reserva, ReservaSemUsuarioDTO.class);
+
                             reservaDto.setHoteisDTO(objectMapper.convertValue(reserva.getHoteisEntity(), HoteisDTO.class));
                             reservaDto.setQuartosDTO(objectMapper.convertValue(reserva.getQuartosEntity(), QuartosDTO.class));
 
