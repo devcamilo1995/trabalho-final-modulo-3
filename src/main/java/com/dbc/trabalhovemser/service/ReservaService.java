@@ -142,31 +142,31 @@ public class ReservaService {
         return usuarioComReservaDTO;
     }
 
-    //HoteisComReserva
-    public List<HotelComReservaDTO> listReservasPorHotel(Integer id) throws RegraDeNegocioException{
-        return hoteisRepository.findById(id).stream()
-                .map(hotel -> {
-                    HotelComReservaDTO hotelComReservaDTO = objectMapper.convertValue(hotel, HotelComReservaDTO.class);
-                    hotelComReservaDTO.setReservas(
-                            hotel.getReservas()
-                                    .stream()
-                                    .map(reserva -> {
-                                        ReservaSemHotelDTO reservaSemHotelDTO = objectMapper.convertValue(reserva, ReservaSemHotelDTO.class);
-                                        reservaSemHotelDTO.setUsuarioDTO(objectMapper.convertValue(reserva.getUsuarioEntity(), UsuarioDTO.class));
-                                        reservaSemHotelDTO.getUsuarioDTO().setGrupos(reserva.getUsuarioEntity().getGrupos().stream().map(
-                                                grupoEntity -> objectMapper.convertValue(grupoEntity, GrupoDTO.class)
-                                        ).collect(Collectors.toList()));
-                                        reservaSemHotelDTO.setQuartosDTO(objectMapper.convertValue(reserva.getQuartosEntity(), QuartosDTO.class));
-
-                                        return reservaSemHotelDTO;
-                                    })
-                                    .collect(Collectors.toList())
-                    );
-                    return hotelComReservaDTO;
-                })
-                .collect(Collectors.toList());
-    }
-
+//    //HoteisComReserva
+//    public List<HotelComReservaDTO> listReservasPorHotel(Integer id) throws RegraDeNegocioException{
+//        return hoteisRepository.findById(id).stream()
+//                .map(hotel -> {
+//                    HotelComReservaDTO hotelComReservaDTO = objectMapper.convertValue(hotel, HotelComReservaDTO.class);
+//                    hotelComReservaDTO.setReservas(
+//                            hotel.getReservas()
+//                                    .stream()
+//                                    .map(reserva -> {
+//                                        ReservaSemHotelDTO reservaSemHotelDTO = objectMapper.convertValue(reserva, ReservaSemHotelDTO.class);
+//                                        reservaSemHotelDTO.setUsuarioDTO(objectMapper.convertValue(reserva.getUsuarioEntity(), UsuarioDTO.class));
+//                                        reservaSemHotelDTO.getUsuarioDTO().setGrupos(reserva.getUsuarioEntity().getGrupos().stream().map(
+//                                                grupoEntity -> objectMapper.convertValue(grupoEntity, GrupoDTO.class)
+//                                        ).collect(Collectors.toList()));
+//                                        reservaSemHotelDTO.setQuartosDTO(objectMapper.convertValue(reserva.getQuartosEntity(), QuartosDTO.class));
+//
+//                                        return reservaSemHotelDTO;
+//                                    })
+//                                    .collect(Collectors.toList())
+//                    );
+//                    return hotelComReservaDTO;
+//                })
+//                .collect(Collectors.toList());
+//    }
+//
 
 }
 

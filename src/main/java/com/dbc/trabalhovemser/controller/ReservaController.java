@@ -100,16 +100,16 @@ public class ReservaController {
         return reservaService.reservasPorUsuario(idUsuario);
     }
 
-    @ApiOperation(value = "Listar reservas por ID de hotel")
-    @ApiResponses(value ={
-            @ApiResponse(code = 200, message = "Reservas listadas com sucesso"),
-            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
-            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
-    })
-    @GetMapping("/listar-por-hotel/{idHotel}")
-    public List<HotelComReservaDTO> listarReservasPorHotel(@Valid @PathVariable Integer idHotel) throws RegraDeNegocioException{
-        return reservaService.listReservasPorHotel(idHotel);
-    }
+//    @ApiOperation(value = "Listar reservas por ID de hotel")
+//    @ApiResponses(value ={
+//            @ApiResponse(code = 200, message = "Reservas listadas com sucesso"),
+//            @ApiResponse(code = 400, message = "Algum dado inconsistente"),
+//            @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
+//    })
+//    @GetMapping("/listar-por-hotel/{idHotel}")
+//    public List<HotelComReservaDTO> listarReservasPorHotel(@Valid @PathVariable Integer idHotel) throws RegraDeNegocioException{
+//        return reservaService.listReservasPorHotel(idHotel);
+//    }
 
 
 
