@@ -25,12 +25,6 @@ public class UsuarioService {
     private final ObjectMapper objectMapper;
     private final GrupoRepository grupoRepository;
 
-//    Criar
-//    public UsuarioDTO create(UsuarioCreateDTO usuarioCreateDTO){
-//        UsuarioEntity usuarioEntity = objectMapper.convertValue(usuarioCreateDTO, UsuarioEntity.class);
-//        UsuarioEntity usuarioCriar = usuarioRepository.save(usuarioEntity);
-//        UsuarioDTO usuarioDTO = objectMapper.convertValue(usuarioCriar, UsuarioDTO.class);
-//        return usuarioDTO;
 
 
     public UsuarioDTO create(UsuarioCreateDTO usuarioCreateDTO) {
@@ -73,6 +67,7 @@ public class UsuarioService {
         List<GrupoEntity> grupoEntityList = grupoRepository.findAllById(usuarioCreateDTO.getGrupos());
         UsuarioEntity usuarioEntity = objectMapper.convertValue(usuarioCreateDTO, UsuarioEntity.class);
         usuarioEntity.setIdUsuario(id);
+        usuarioEntity.setSenha(new BCryptPasswordEncoder().encode(usuarioCreateDTO.getSenha()));
         usuarioEntity.setGrupos(grupoEntityList);
         UsuarioEntity usuarioAtt = usuarioRepository.save(usuarioEntity);
         UsuarioDTO dto = objectMapper.convertValue(usuarioAtt, UsuarioDTO.class);
