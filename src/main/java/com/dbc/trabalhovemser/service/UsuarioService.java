@@ -70,11 +70,13 @@ public class UsuarioService {
     //Atualizar
     public UsuarioDTO update (Integer id, UsuarioCreateDTO usuarioCreateDTO) throws RegraDeNegocioException {
         findById(id);
+        List<GrupoEntity> grupoEntityList = grupoRepository.findAllById(usuarioCreateDTO.getGrupos());
         UsuarioEntity usuarioEntity = objectMapper.convertValue(usuarioCreateDTO, UsuarioEntity.class);
         usuarioEntity.setIdUsuario(id);
+        usuarioEntity.setGrupos(grupoEntityList);
         UsuarioEntity usuarioAtt = usuarioRepository.save(usuarioEntity);
         UsuarioDTO dto = objectMapper.convertValue(usuarioAtt, UsuarioDTO.class);
-        dto.setGrupos(usuarioEntity.getGrupos().stream().map(grupoEntity -> objectMapper.convertValue(grupoEntity, GrupoDTO.class)).collect(Collectors.toList()));
+        dto.setGrupos(usuarioAtt.getGrupos().stream().map(grupoEntity -> objectMapper.convertValue(grupoEntity, GrupoDTO.class)).collect(Collectors.toList()));
 
         return dto;
     }

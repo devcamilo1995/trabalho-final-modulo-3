@@ -85,11 +85,17 @@ public class ReservaService {
         reservaEntity.setHoteisEntity(hoteisRepository.getById(reservaCreateDTO.getIdHotel()));
         reservaEntity.setQuartosEntity(quartosRepository.getById(reservaCreateDTO.getIdQuarto()));
         reservaEntity.setIdReserva(id);
+
         ReservaEntity reservaCriar = reservaRepository.save(reservaEntity);
+
         ReservaDTO reservaDTO = objectMapper.convertValue(reservaCriar, ReservaDTO.class);
         reservaDTO.setUsuarioDTO(objectMapper.convertValue(reservaCriar.getUsuarioEntity(), UsuarioDTO.class));
+        reservaDTO.getUsuarioDTO().setGrupos(reservaCriar.getUsuarioEntity().getGrupos().stream().map(grupoEntity ->
+                objectMapper.convertValue(grupoEntity, GrupoDTO.class)).collect(Collectors.toList()));
         reservaDTO.setHoteisDTO(objectMapper.convertValue(reservaCriar.getHoteisEntity(), HoteisDTO.class));
         reservaDTO.setQuartosDTO(objectMapper.convertValue(reservaCriar.getQuartosEntity(), QuartosDTO.class));
+
+
         return reservaDTO;
 
     }
@@ -147,6 +153,9 @@ public class ReservaService {
                                     .map(reserva -> {
                                         ReservaSemHotelDTO reservaSemHotelDTO = objectMapper.convertValue(reserva, ReservaSemHotelDTO.class);
                                         reservaSemHotelDTO.setUsuarioDTO(objectMapper.convertValue(reserva.getUsuarioEntity(), UsuarioDTO.class));
+                                        reservaSemHotelDTO.getUsuarioDTO().setGrupos(reserva.getUsuarioEntity().getGrupos().stream().map(
+                                                grupoEntity -> objectMapper.convertValue(grupoEntity, GrupoDTO.class)
+                                        ).collect(Collectors.toList()));
                                         reservaSemHotelDTO.setQuartosDTO(objectMapper.convertValue(reserva.getQuartosEntity(), QuartosDTO.class));
 
                                         return reservaSemHotelDTO;
