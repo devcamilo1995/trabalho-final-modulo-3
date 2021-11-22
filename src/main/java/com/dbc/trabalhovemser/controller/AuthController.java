@@ -4,7 +4,6 @@ package com.dbc.trabalhovemser.controller;
 import com.dbc.trabalhovemser.dto.LoginDTO;
 import com.dbc.trabalhovemser.entity.UsuarioEntity;
 import com.dbc.trabalhovemser.security.TokenService;
-import com.dbc.trabalhovemser.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
